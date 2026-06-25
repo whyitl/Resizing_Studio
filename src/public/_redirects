@@ -1,5 +1,5 @@
-# Cloudflare Pages clean URLs (extensionless paths → HTML files)
-/contact          /contact.html          200
-/privacy-policy   /privacy-policy.html   200
-/terms            /terms.html            200
-/accessibility    /accessibility.html    200
+# Cloudflare Pages clean URLs (extensionless paths → directory index files)
+/contact          /contact/index.html          200
+/privacy-policy   /privacy-policy/index.html   200
+/terms            /terms/index.html            200
+/accessibility    /accessibility/index.html    200

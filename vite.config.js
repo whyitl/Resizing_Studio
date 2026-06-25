@@ -1,23 +1,40 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'node:path'
+import { mkdir, rename } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { injectSeo } from './vite-seo-plugin.js'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
+const DIRECTORY_PAGES = ['contact', 'privacy-policy', 'terms', 'accessibility']
+
+function cleanUrlMiddleware() {
+  return (req, _res, next) => {
+    if (!req.url) return next()
+    const [pathname, search = ''] = req.url.split('?')
+    if (
+      pathname !== '/' &&
+      !pathname.includes('.') &&
+      !pathname.endsWith('/')
+    ) {
+      req.url = `${pathname}.html${search ? `?${search}` : ''}`
+    }
+    next()
+  }
+}
 
 function cleanUrls() {
   return {
     name: 'clean-urls',
     configureServer(server) {
+      server.middlewares.use(cleanUrlMiddleware())
+    },
+    configurePreviewServer(server) {
       server.middlewares.use((req, _res, next) => {
         if (!req.url) return next()
         const [pathname, search = ''] = req.url.split('?')
-        if (
-          pathname !== '/' &&
-          !pathname.includes('.') &&
-          !pathname.endsWith('/')
-        ) {
-          req.url = `${pathname}.html${search ? `?${search}` : ''}`
+        if (pathname !== '/' && !pathname.includes('.')) {
+          const normalized = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+          req.url = `${normalized}/index.html${search ? `?${search}` : ''}`
         }
         next()
       })
@@ -25,9 +42,24 @@ function cleanUrls() {
   }
 }
 
+function directoryPages() {
+  return {
+    name: 'directory-pages',
+    async closeBundle() {
+      const outDir = resolve(root, 'dist')
+      for (const page of DIRECTORY_PAGES) {
+        const src = join(outDir, `${page}.html`)
+        const dir = join(outDir, page)
+        await mkdir(dir, { recursive: true })
+        await rename(src, join(dir, 'index.html'))
+      }
+    },
+  }
+}
+
 export default defineConfig({
   root: 'src',
-  plugins: [cleanUrls(), injectSeo()],
+  plugins: [cleanUrls(), injectSeo(), directoryPages()],
   build: {
     target: 'es2020',
     outDir: '../dist',
