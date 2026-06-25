@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block build artifacts if ever exposed
+Disallow: /assets/*.map
+
+Sitemap: https://www.resizing.ca/sitemap.xml

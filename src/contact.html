@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__brand">
+      <a href="/" class="nav__ascii">Resizing Studio</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav__toggle-bars" aria-hidden="true"></span>
+    </button>
+    <nav class="nav__links" id="primary-nav" aria-label="Main navigation">
+      <a href="/#services">Services</a>
+      <a href="/#work">Work</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact" aria-current="page">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__clock" id="clock" aria-label="Current Calgary time">
+        <span class="nav__clock-time">00:00:00 AM</span>
+        <span class="nav__clock-status" aria-hidden="true">
+          <span class="nav__clock-dot"></span>
+          <span class="nav__clock-label">Working</span>
+        </span>
+      </span>
+      <a href="/contact" class="nav__cta">Reach Out</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+  <section class="contact" aria-labelledby="contact-heading">
+    <h1 class="visually-hidden" id="contact-heading">Contact</h1>
+
+    <div class="contact__layout">
+      <div class="contact__form-col">
+        <form class="contact__form" id="contact-form" novalidate>
+          <div class="contact__section">
+            <div class="contact__section-head">
+              <span class="contact__section-num">01</span>
+              <h2 class="contact__section-title">How can we help?</h2>
+            </div>
+            <div class="contact__section-fields">
+              <div class="contact__field">
+                <label class="contact__label" for="reason">Reason for enquiry</label>
+                <select class="contact__select" id="reason" name="reason" required>
+                  <option value="" disabled selected>Select...</option>
+                  <option value="new-project">New project</option>
+                  <option value="services">Learn about services</option>
+                  <option value="maintenance">Hosting &amp; maintenance</option>
+                  <option value="branding">Branding</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__section">
+            <div class="contact__section-head">
+              <span class="contact__section-num">02</span>
+              <h2 class="contact__section-title">Tell us about yourself</h2>
+            </div>
+            <div class="contact__section-fields">
+              <div class="contact__field">
+                <label class="contact__label" for="full-name">Full name</label>
+                <input class="contact__input" type="text" id="full-name" name="full-name" placeholder="John Doe" autocomplete="name" required />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="position">Position</label>
+                <input class="contact__input" type="text" id="position" name="position" placeholder="CEO" autocomplete="organization-title" />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="email">Email address</label>
+                <input class="contact__input" type="email" id="email" name="email" placeholder="example@domain.com" autocomplete="email" required />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="website">Website URL</label>
+                <input class="contact__input" type="text" id="website" name="website" placeholder="https://your-website.com" autocomplete="url" inputmode="url" />
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__section">
+            <div class="contact__section-head">
+              <span class="contact__section-num">03</span>
+              <h2 class="contact__section-title">Tell us about your business</h2>
+            </div>
+            <div class="contact__section-fields">
+              <div class="contact__field">
+                <label class="contact__label" for="business-name">What is your business called?</label>
+                <input class="contact__input" type="text" id="business-name" name="business-name" placeholder="Acme Corporation" autocomplete="organization" />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="business-desc">What do you do</label>
+                <input class="contact__input" type="text" id="business-desc" name="business-desc" placeholder="Make and sell products" />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="location">Where are you located?</label>
+                <input class="contact__input" type="text" id="location" name="location" placeholder="Alberta, Canada" autocomplete="address-level1" />
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="operating">How long have you been operating?</label>
+                <select class="contact__select" id="operating" name="operating">
+                  <option value="" disabled selected>Select...</option>
+                  <option value="less-than-1">Less than 1 year</option>
+                  <option value="1-3">1–3 years</option>
+                  <option value="3-5">3–5 years</option>
+                  <option value="5-10">5–10 years</option>
+                  <option value="10-plus">10+ years</option>
+                </select>
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="budget">What is the budget for your project?</label>
+                <input class="contact__input" type="text" id="budget" name="budget" placeholder="e.g. $5k – $10k" />
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__section">
+            <div class="contact__section-head">
+              <span class="contact__section-num">04</span>
+              <h2 class="contact__section-title">Additional information</h2>
+            </div>
+            <div class="contact__section-fields">
+              <div class="contact__field">
+                <label class="contact__label" for="message">How can we help?</label>
+                <textarea class="contact__textarea" id="message" name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__submit-wrap">
+            <button class="contact__submit" type="submit">
+              Send message
+              <span class="contact__submit-arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="contact__status" id="contact-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact__sidebar" aria-label="Contact details">
+        <p class="contact__sidebar-text">
+          Ready to start a new project, learn more about our services, or connect with our team? Reach out using the contact form or details below.
+        </p>
+        <div class="contact__pills">
+          <a href="mailto:contact@resizing.ca" class="contact__pill">Email</a>
+          <a href="https://www.linkedin.com/company/resizing/" class="contact__pill" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/resizing" class="contact__pill" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <span class="footer__label">NAVIGATION</span>
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">SOCIALS</span>
+        <a href="https://www.instagram.com/resizing" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/company/resizing/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">LEGAL</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/accessibility">Accessibility</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">CONTACT</span>
+        <a href="mailto:contact@resizing.ca">contact@resizing.ca</a>
+      </div>
+      <div class="footer__col footer__col--spotify">
+        <span class="footer__label footer__label--sentence">Listen to our office mix</span>
+        <iframe
+          class="footer__spotify"
+          src="https://open.spotify.com/embed/playlist/1btppMytEHWdikp8llv2Wl?utm_source=generator&theme=0&si=fa61718bf48441b1"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify playlist"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="footer__wordmark">
+      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗ 
+██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝ 
+██████╔╝ █████╗   ███████╗ ██║   ███╔╝  ██║ ██╔██╗ ██║ ██║  ███╗
+██╔══██╗ ██╔══╝   ╚════██║ ██║  ███╔╝   ██║ ██║╚██╗██║ ██║   ██║
+██║  ██║ ███████╗ ███████║ ██║ ███████╗ ██║ ██║ ╚████║ ╚██████╔╝
+╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝  ╚═══╝  ╚═════╝ </pre>
+      <div class="footer__weather" id="weather" aria-label="Calgary weather">
+        <span class="footer__weather-location">Calgary, AB</span>
+        <span class="footer__weather-icon" aria-hidden="true"></span>
+        <div class="footer__weather-info">
+          <span class="footer__weather-temp">--°C</span>
+          <span class="footer__weather-label"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="year"></span> Resizing Studio</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

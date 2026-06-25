@@ -1,0 +1,25 @@
+{
+  "name": "resizing-studio",
+  "version": "1.0.0",
+  "description": "Resizing Studio marketing site",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "node scripts/validate-assets.mjs",
+    "build": "vite build",
+    "build:strict": "node scripts/validate-assets.mjs --strict && vite build",
+    "preview": "vite preview",
+    "capture:og": "node scripts/capture-og-images.mjs",
+    "serve": "python3 -m http.server 5000 --directory dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

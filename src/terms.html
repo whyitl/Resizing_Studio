@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__brand">
+      <a href="/" class="nav__ascii">Resizing Studio</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav__toggle-bars" aria-hidden="true"></span>
+    </button>
+    <nav class="nav__links" id="primary-nav" aria-label="Main navigation">
+      <a href="/#services">Services</a>
+      <a href="/#work">Work</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__clock" id="clock" aria-label="Current Calgary time">
+        <span class="nav__clock-time">00:00:00 AM</span>
+        <span class="nav__clock-status" aria-hidden="true">
+          <span class="nav__clock-dot"></span>
+          <span class="nav__clock-label">Working</span>
+        </span>
+      </span>
+      <a href="/contact" class="nav__cta">Reach Out</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+  <!-- ===== TERMS OF SERVICE ===== -->
+  <section class="legal">
+    <div class="legal__header">
+      <h1 class="legal__title">Terms of Service</h1>
+      <p class="legal__date">Effective Date: February 12, 2026</p>
+    </div>
+
+    <p class="legal__intro">
+      Welcome to Resizing ("we," "our," or "us"). These Terms and Conditions govern your use of our website located at www.resizing.ca ("Website"). By accessing or using our Website, you agree to comply with and be bound by these terms. If you do not agree with these terms, please do not use our Website.
+    </p>
+
+    <div class="legal__section">
+      <span class="legal__section-num">01</span>
+      <h2 class="legal__section-title">Use of the Website</h2>
+      <div class="legal__body">
+        <p>You agree to use our Website only for lawful purposes and in a way that does not infringe on the rights of others or restrict their use and enjoyment of the Website. You must not misuse or interfere with our Website by introducing viruses, malware, or any harmful technology.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">02</span>
+      <h2 class="legal__section-title">Intellectual Property</h2>
+      <div class="legal__body">
+        <p>All content on this Website, including text, graphics, logos, and designs, is the property of Resizing or its content providers and is protected by intellectual property laws. You may not reproduce, distribute, or exploit any content from our Website without prior written consent from us.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">03</span>
+      <h2 class="legal__section-title">Accounts</h2>
+      <div class="legal__body">
+        <p>This Website does not offer user logins or accounts. If that changes in the future, we will update these Terms and explain any registration requirements.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">04</span>
+      <h2 class="legal__section-title">Services</h2>
+      <div class="legal__body">
+        <p>Resizing offers design and development services. Our services and pricing details are outlined separately and subject to change. All services provided are subject to a separate agreement or contract.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">05</span>
+      <h2 class="legal__section-title">Limitation of Liability</h2>
+      <div class="legal__body">
+        <p>Resizing is not responsible for any direct, indirect, incidental, or consequential damages arising from your use of our Website or services. We make no warranties regarding the accuracy, reliability, or availability of the Website or any content.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">06</span>
+      <h2 class="legal__section-title">Third-Party Links</h2>
+      <div class="legal__body">
+        <p>Our Website may contain links to third-party websites that are not controlled by us. We are not responsible for the content or practices of these third-party sites.</p>
+      </div>
+    </div>
+
+    <div class="legal__back">
+      <a href="/">← Back to homepage</a>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <span class="footer__label">NAVIGATION</span>
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">SOCIALS</span>
+        <a href="https://www.instagram.com/resizing" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/company/resizing/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">LEGAL</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/accessibility">Accessibility</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">CONTACT</span>
+        <a href="mailto:contact@resizing.ca">contact@resizing.ca</a>
+      </div>
+      <div class="footer__col footer__col--spotify">
+        <span class="footer__label footer__label--sentence">Listen to our office mix</span>
+        <iframe
+          class="footer__spotify"
+          src="https://open.spotify.com/embed/playlist/1btppMytEHWdikp8llv2Wl?utm_source=generator&theme=0&si=fa61718bf48441b1"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify playlist"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="footer__wordmark">
+      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗ 
+██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝ 
+██████╔╝ █████╗   ███████╗ ██║   ███╔╝  ██║ ██╔██╗ ██║ ██║  ███╗
+██╔══██╗ ██╔══╝   ╚════██║ ██║  ███╔╝   ██║ ██║╚██╗██║ ██║   ██║
+██║  ██║ ███████╗ ███████║ ██║ ███████╗ ██║ ██║ ╚████║ ╚██████╔╝
+╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝  ╚═══╝  ╚═════╝ </pre>
+      <div class="footer__weather" id="weather" aria-label="Calgary weather">
+        <span class="footer__weather-location">Calgary, AB</span>
+        <span class="footer__weather-icon" aria-hidden="true"></span>
+        <div class="footer__weather-info">
+          <span class="footer__weather-temp">--°C</span>
+          <span class="footer__weather-label"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="year"></span> Resizing Studio</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

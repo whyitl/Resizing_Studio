@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__brand">
+      <a href="/" class="nav__ascii">Resizing Studio</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav__toggle-bars" aria-hidden="true"></span>
+    </button>
+    <nav class="nav__links" id="primary-nav" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#faq">FAQ</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__clock" id="clock" aria-label="Current Calgary time">
+        <span class="nav__clock-time">00:00:00 AM</span>
+        <span class="nav__clock-status" aria-hidden="true">
+          <span class="nav__clock-dot"></span>
+          <span class="nav__clock-label">Working</span>
+        </span>
+      </span>
+      <a href="/contact" class="nav__cta">Reach Out</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="about">
+    <h1 class="hero__title">
+      <span class="hero__word hero__word--left">RESIZING</span>
+      <span class="hero__row">
+        <span class="hero__word">STUDIO</span>
+        <span class="hero__thumb" role="img" aria-label="Calgary skyline"></span>
+      </span>
+    </h1>
+
+    <div class="hero__meta">
+      <p class="hero__intro">
+        Thoughtful, effective websites for small businesses
+        without the complexity or big agency price tag. We work
+        with small businesses in Calgary who want a web presence
+        that reflects the quality of what they do.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services" aria-labelledby="services-heading">
+    <h2 class="section-label section-label--light" id="services-heading">
+      THE WORK WE DO <span class="muted-light">AND WHO WE DO IT FOR</span>
+    </h2>
+
+    <div class="services__grid">
+      <article class="svc">
+        <span class="svc__num">01</span>
+        <h3 class="svc__title">Web Development</h3>
+        <p class="svc__desc">Custom websites built with modern technologies. Fast, accessible, and designed to convert visitors into customers.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__num">02</span>
+        <h3 class="svc__title">Hosting &amp; Maintenance</h3>
+        <p class="svc__desc">Reliable hosting with ongoing updates and support. Your site stays fast, secure, and running smoothly.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__num">03</span>
+        <h3 class="svc__title">Branding</h3>
+        <p class="svc__desc">Visual identity that captures your essence. From logos to complete brand systems that make you memorable.</p>
+      </article>
+    </div>
+
+    <a href="/contact" class="services__pricing">Projects start at $500</a>
+  </section>
+
+  <!-- ===== SHOWCASED WORK ===== -->
+  <section class="work" id="work" aria-labelledby="work-heading">
+    <h2 class="section-label" id="work-heading">
+      SHOWCASED <span class="muted">WORK</span>
+      <span class="slash" aria-hidden="true">/</span>
+    </h2>
+
+    <div class="worklist">
+      <div class="worklist__head" aria-hidden="true">
+        <span>YEAR</span>
+        <span>CLIENT</span>
+        <span>NICHE</span>
+        <span>TECHNOLOGY</span>
+      </div>
+
+      <article class="wrow is-open">
+        <button class="wrow__bar" type="button" aria-expanded="true" aria-controls="wrow-panel-pureglow" id="wrow-trigger-pureglow">
+          <span class="wrow__year">2025</span>
+          <span class="wrow__client">PureGlow Electric</span>
+          <span class="wrow__type">Trades</span>
+          <span class="wrow__tech">React, Vite, Tailwind</span>
+        </button>
+        <div class="wrow__panel" id="wrow-panel-pureglow" role="region" aria-labelledby="wrow-trigger-pureglow">
+          <div class="wrow__inner">
+            <div class="wrow__gallery">
+              <div class="wrow__img" style="flex:1.5;background-image:url('/PureGlowHome.webp')" role="img" aria-label="PureGlow Electric website homepage screenshot"></div>
+              <div class="wrow__img" style="flex:1.3;background-image:url('/PureGlowServices.webp')" role="img" aria-label="PureGlow Electric services page screenshot"></div>
+            </div>
+            <p class="wrow__desc">PureGlow Electric's website provides a professional online presence for the electrical services company, making it simple for customers to learn about their services and get in touch. The site features clear service descriptions, contact information, and a user-friendly layout that helps visitors quickly find what they need.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="wrow">
+        <button class="wrow__bar" type="button" aria-expanded="false" aria-controls="wrow-panel-tucn" id="wrow-trigger-tucn">
+          <span class="wrow__year">2025</span>
+          <span class="wrow__client">TUCN Media</span>
+          <span class="wrow__type">Marketing</span>
+          <span class="wrow__tech">React, Vite, Tailwind</span>
+        </button>
+        <div class="wrow__panel" id="wrow-panel-tucn" role="region" aria-labelledby="wrow-trigger-tucn" inert>
+          <div class="wrow__inner">
+            <div class="wrow__gallery">
+              <div class="wrow__img" style="flex:1.5;background-image:url('/TUCNHome.webp')" role="img" aria-label="TUCN Media website homepage screenshot"></div>
+              <div class="wrow__img" style="flex:1.3;background-image:url('/TUCNServices.webp')" role="img" aria-label="TUCN Media services page screenshot"></div>
+            </div>
+            <p class="wrow__desc">TUCN Media needed a fast, credible web presence that could evolve with campaigns. The site highlights their services with clear messaging, strong typography, and a contact flow that stays lightweight so visitors can reach out without friction.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <h2 class="section-label section-label--light" id="faq-heading">
+      FREQUENTLY <span class="muted-light">ASKED</span>
+    </h2>
+
+    <div class="faq__list">
+      <details class="faq__item is-open" open>
+        <summary aria-expanded="true">
+          <span class="faq__q">How long does it take to build a website?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel">
+          <div class="faq__inner">
+            <p>Most projects are completed within 4-5 weeks depending on scope and how quickly feedback is provided. Larger or more complex sites may take longer.</p>
+          </div>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary aria-expanded="false">
+          <span class="faq__q">Do you offer ongoing support or maintenance?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel">
+          <div class="faq__inner">
+            <p>Yes. We offer maintenance packages to keep your site secure, up-to-date, and running smoothly after launch. Ask us about our ongoing support options.</p>
+          </div>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary aria-expanded="false">
+          <span class="faq__q">What if I need changes after the website goes live?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel">
+          <div class="faq__inner">
+            <p>Minor revisions within the agreed scope are included. For additional changes after launch, we offer affordable hourly or retainer-based support.</p>
+          </div>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary aria-expanded="false">
+          <span class="faq__q">Who hosts the website?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel">
+          <div class="faq__inner">
+            <p>Your website is hosted on Cloudflare Pages, connected directly to a GitHub repository. Whenever updates are made, we push the changes to GitHub and Cloudflare automatically detects the commit, builds the project, and deploys it live — all within minutes.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq__cta">
+      <a href="/contact" class="faq__pill">Not seeing your question? Drop us a line.</a>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="contact">
+    <div class="cta__inner">
+      <div class="cta__content">
+        <h2 class="cta__title">Let's talk about your project</h2>
+        <p class="cta__sub">Ready to start a new project, ask about our services, or simply say hello? Reach out using the contact details below or fill out our <a href="/contact" class="cta__sub-link">enquiry form.</a></p>
+        <div class="cta__badge">LIMITED SPOTS IN <span id="quarter">Q2</span></div>
+      </div>
+
+      <div class="cta__contact">
+        <div class="cta__field">
+          <span class="cta__label">EMAIL</span>
+          <a href="mailto:contact@resizing.ca" class="cta__value">contact@resizing.ca</a>
+        </div>
+        <div class="cta__field">
+          <span class="cta__label">LOCATION</span>
+          <span class="cta__value">Calgary, Alberta</span>
+        </div>
+        <div class="cta__field">
+          <span class="cta__label">SOCIAL</span>
+          <div class="cta__socials">
+            <a href="https://www.linkedin.com/company/resizing/" class="cta__social" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.instagram.com/resizing" class="cta__social" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER (interactive resize mechanic) ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <span class="footer__label">NAVIGATION</span>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#faq">FAQ</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">SOCIALS</span>
+        <a href="https://www.instagram.com/resizing" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/company/resizing/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">LEGAL</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/accessibility">Accessibility</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">CONTACT</span>
+        <a href="mailto:contact@resizing.ca">contact@resizing.ca</a>
+      </div>
+      <div class="footer__col footer__col--spotify">
+        <span class="footer__label footer__label--sentence">Listen to our office mix</span>
+        <iframe
+          class="footer__spotify"
+          src="https://open.spotify.com/embed/playlist/1btppMytEHWdikp8llv2Wl?utm_source=generator&theme=0&si=fa61718bf48441b1"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify playlist"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- ASCII wordmark -->
+    <div class="footer__wordmark">
+      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗ 
+██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝ 
+██████╔╝ █████╗   ███████╗ ██║   ███╔╝  ██║ ██╔██╗ ██║ ██║  ███╗
+██╔══██╗ ██╔══╝   ╚════██║ ██║  ███╔╝   ██║ ██║╚██╗██║ ██║   ██║
+██║  ██║ ███████╗ ███████║ ██║ ███████╗ ██║ ██║ ╚████║ ╚██████╔╝
+╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝  ╚═══╝  ╚═════╝ </pre>
+      <div class="footer__weather" id="weather" aria-label="Calgary weather">
+        <span class="footer__weather-location">Calgary, AB</span>
+        <span class="footer__weather-icon" aria-hidden="true"></span>
+        <div class="footer__weather-info">
+          <span class="footer__weather-temp">--°C</span>
+          <span class="footer__weather-label"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="year"></span> Resizing Studio</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

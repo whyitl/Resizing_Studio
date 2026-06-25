@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__brand">
+      <a href="/" class="nav__ascii">Resizing Studio</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav__toggle-bars" aria-hidden="true"></span>
+    </button>
+    <nav class="nav__links" id="primary-nav" aria-label="Main navigation">
+      <a href="/#services">Services</a>
+      <a href="/#work">Work</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__clock" id="clock" aria-label="Current Calgary time">
+        <span class="nav__clock-time">00:00:00 AM</span>
+        <span class="nav__clock-status" aria-hidden="true">
+          <span class="nav__clock-dot"></span>
+          <span class="nav__clock-label">Working</span>
+        </span>
+      </span>
+      <a href="/contact" class="nav__cta">Reach Out</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+  <!-- ===== ACCESSIBILITY STATEMENT ===== -->
+  <section class="legal">
+    <div class="legal__header">
+      <h1 class="legal__title">Accessibility Statement</h1>
+      <p class="legal__date">Last updated: June 25, 2026</p>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">01</span>
+      <h2 class="legal__section-title">Our commitment</h2>
+      <div class="legal__body">
+        <p>Resizing Studio is committed to making www.resizing.ca accessible to as many people as possible, regardless of ability or technology. We aim to meet the <a href="https://www.w3.org/TR/WCAG21/" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</a>.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">02</span>
+      <h2 class="legal__section-title">What we do</h2>
+      <div class="legal__body">
+        <p>We build accessibility into how the Site is made:</p>
+        <ul>
+          <li><strong>Semantic structure:</strong> pages use proper heading hierarchy and landmark elements so screen readers can navigate them logically.</li>
+          <li><strong>Keyboard support:</strong> interactive elements, including expandable work and FAQ sections, can be operated with the keyboard.</li>
+          <li><strong>Media:</strong> meaningful images include text alternatives; decorative visuals are hidden from assistive technologies.</li>
+          <li><strong>Visual clarity:</strong> we use a consistent type and color system designed for readable contrast across light and dark sections.</li>
+          <li><strong>Responsive design:</strong> the Site adapts to different screen sizes and zoom levels.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">03</span>
+      <h2 class="legal__section-title">Known limitations</h2>
+      <div class="legal__body">
+        <p>We're continually improving, and some areas may not yet fully meet our target:</p>
+        <ul>
+          <li>Decorative and animated elements are non-essential; if any are difficult to interact with, all key content and actions remain available elsewhere on the page.</li>
+          <li>Some third-party embedded content may not fully match our accessibility standards, as it is controlled by external providers.</li>
+        </ul>
+        <p>If you encounter any of these, please tell us — see below.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">04</span>
+      <h2 class="legal__section-title">Feedback and help</h2>
+      <div class="legal__body">
+        <p>If you have trouble accessing any part of the Site, or need information in a different format, we want to help. Contact us:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:contact@resizing.ca">contact@resizing.ca</a></li>
+        </ul>
+        <p>We aim to respond within 5 business days and will work with you to provide the information or service you need.</p>
+      </div>
+    </div>
+
+    <div class="legal__section">
+      <span class="legal__section-num">05</span>
+      <h2 class="legal__section-title">Ongoing work</h2>
+      <div class="legal__body">
+        <p>We review accessibility as part of our development process and update this statement as the Site evolves. This statement was last reviewed on June 25, 2026.</p>
+      </div>
+    </div>
+
+    <div class="legal__back">
+      <a href="/">← Back to homepage</a>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__col">
+        <span class="footer__label">NAVIGATION</span>
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">SOCIALS</span>
+        <a href="https://www.instagram.com/resizing" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/company/resizing/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">LEGAL</span>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/accessibility">Accessibility</a>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">CONTACT</span>
+        <a href="mailto:contact@resizing.ca">contact@resizing.ca</a>
+      </div>
+      <div class="footer__col footer__col--spotify">
+        <span class="footer__label footer__label--sentence">Listen to our office mix</span>
+        <iframe
+          class="footer__spotify"
+          src="https://open.spotify.com/embed/playlist/1btppMytEHWdikp8llv2Wl?utm_source=generator&theme=0&si=fa61718bf48441b1"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify playlist"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="footer__wordmark">
+      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗ 
+██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝ 
+██████╔╝ █████╗   ███████╗ ██║   ███╔╝  ██║ ██╔██╗ ██║ ██║  ███╗
+██╔══██╗ ██╔══╝   ╚════██║ ██║  ███╔╝   ██║ ██║╚██╗██║ ██║   ██║
+██║  ██║ ███████╗ ███████║ ██║ ███████╗ ██║ ██║ ╚████║ ╚██████╔╝
+╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝  ╚═══╝  ╚═════╝ </pre>
+      <div class="footer__weather" id="weather" aria-label="Calgary weather">
+        <span class="footer__weather-location">Calgary, AB</span>
+        <span class="footer__weather-icon" aria-hidden="true"></span>
+        <div class="footer__weather-info">
+          <span class="footer__weather-temp">--°C</span>
+          <span class="footer__weather-label"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="year"></span> Resizing Studio</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
