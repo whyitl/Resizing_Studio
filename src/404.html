@@ -1,65 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <!-- @partial head-common -->
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <header class="nav">
-    <div class="nav__brand">
-      <a href="/" class="nav__ascii">Resizing Studio</a>
-    </div>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
-      <span class="nav__toggle-bars" aria-hidden="true"></span>
-    </button>
-    <nav class="nav__links" id="primary-nav" aria-label="Main navigation">
-      <a href="/#services">Services</a>
-      <a href="/#work">Work</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/contact">Contact</a>
-    </nav>
-    <div class="nav__right">
-      <span class="nav__clock" id="clock" aria-label="Current Calgary time">
-        <span class="nav__clock-time">00:00:00 AM</span>
-        <span class="nav__clock-status" aria-hidden="true">
-          <span class="nav__clock-dot"></span>
-          <span class="nav__clock-label">Working</span>
-        </span>
-      </span>
-      <a href="/contact" class="nav__cta">Reach Out</a>
-    </div>
-  </header>
+  <!-- @partial nav -->
 
   <main id="main-content" tabindex="-1">
-    <section class="legal">
+    <section class="legal legal--404">
+      <p class="legal__code" aria-hidden="true"><span>4</span><span>0</span><span>4</span></p>
       <div class="legal__header">
-        <h1 class="legal__title">Page not found</h1>
-        <p class="legal__date">Error 404</p>
+        <h1 class="legal__title">This page got resized out of existence.</h1>
+        <p class="legal__date">Error 404 — page not found</p>
       </div>
 
       <p class="legal__intro">
-        The page you are looking for does not exist or may have been moved. Head back to the homepage or get in touch if you need help finding something.
+        The page you're looking for doesn't exist, or it may have moved.
+        Head back to the homepage, or drop us a line if you were looking
+        for something specific.
       </p>
 
-      <p class="legal__back">
-        <a href="/">← Back to homepage</a>
-      </p>
+      <div class="hero__actions">
+        <a href="/" class="btn btn--primary">Back to homepage</a>
+        <a href="/contact" class="btn btn--ghost">Contact us</a>
+      </div>
     </section>
   </main>
 
   <footer class="footer" id="footer">
-    <div class="footer__bottom">
-      <span>&copy; <span id="year"></span> Resizing Studio</span>
+    <div class="footer__inner">
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> Resizing Studio</span>
+      </div>
     </div>
   </footer>
 
-  <script type="module" src="./main.js"></script>
+  <script type="module" src="./scripts/main.ts"></script>
 </body>
 </html>

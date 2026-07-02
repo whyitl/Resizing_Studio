@@ -1,0 +1,100 @@
+/* ============================================================
+   Hero — oversized wordmark, staggered load reveal.
+   ============================================================ */
+
+.hero {
+  padding: clamp(40px, 6vw, 72px) var(--gutter) var(--space-2xl);
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(18px, 3vw, 34px);
+  animation: rise-in 0.7s var(--ease-out) both;
+}
+.hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--moss);
+  border: 1px solid var(--forest);
+  flex-shrink: 0;
+}
+
+.hero__title {
+  display: block;
+  width: 100%;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.hero__word {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  font-stretch: 95%;
+  letter-spacing: -0.045em;
+  line-height: 0.84;
+  color: var(--ink);
+}
+.hero__word--left {
+  text-align: left;
+  animation: rise-in 0.8s var(--ease-out) 0.08s both;
+}
+.hero__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 32px);
+  animation: rise-in 0.8s var(--ease-out) 0.18s both;
+}
+.hero__row .hero__word {
+  text-align: right;
+  margin-left: auto;
+}
+
+.hero__thumb {
+  width: clamp(130px, 14vw, 220px);
+  height: clamp(100px, 10.5vw, 165px);
+  object-fit: cover;
+  object-position: center 62%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-card);
+  flex-shrink: 0;
+  transform: rotate(-2deg);
+  transition: transform var(--dur-slow) var(--ease-spring);
+}
+.hero__thumb:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.hero__meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-top: clamp(40px, 6vw, 76px);
+  flex-wrap: wrap;
+  animation: rise-in 0.8s var(--ease-out) 0.3s both;
+}
+
+.hero__intro {
+  max-width: 44ch;
+  font-size: var(--text-lg);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.hero__intro strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

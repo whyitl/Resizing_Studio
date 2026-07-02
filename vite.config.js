@@ -3,6 +3,7 @@ import { mkdir, rename } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { injectSeo } from './vite-seo-plugin.js'
+import { injectPartials } from './vite-partials-plugin.js'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
 const DIRECTORY_PAGES = ['contact', 'privacy-policy', 'terms', 'accessibility']
@@ -59,7 +60,7 @@ function directoryPages() {
 
 export default defineConfig({
   root: 'src',
-  plugins: [cleanUrls(), injectSeo(), directoryPages()],
+  plugins: [cleanUrls(), injectPartials(), injectSeo(), directoryPages()],
   build: {
     target: 'es2020',
     outDir: '../dist',
