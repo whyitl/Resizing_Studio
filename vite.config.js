@@ -86,8 +86,8 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     cssMinify: true,
-    minify: 'esbuild',
-    rollupOptions: {
+    minify: 'oxc',
+    rolldownOptions: {
       input: {
         index: resolve(root, 'src/index.html'),
         contact: resolve(root, 'src/contact.html'),
