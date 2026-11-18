@@ -7,7 +7,6 @@ import { initAscii } from './ascii'
 import { initContactForm } from './contact-form'
 import { initReveals } from './reveal'
 import { initSelFrames } from './sel-frame'
-import { initSpotlights } from './spotlight'
 import { initSun } from './sun'
 import { initViewportReadout } from './viewport'
 import { initBuildInfo } from './build-info'
@@ -43,7 +42,6 @@ initFaq()
 initWorkRows()
 initContactForm()
 initReveals()
-initSpotlights()
 
 // Footer telemetry
 void initWeather()

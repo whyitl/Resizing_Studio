@@ -64,12 +64,6 @@
   color: var(--on-night);
   text-wrap: balance;
 }
-.cta__title em {
-  display: inline-block;
-  font-size: 1.08em;
-  color: var(--peach);
-  letter-spacing: -0.02em;
-}
 .cta__sub {
   max-width: 46ch;
   font-size: var(--text-lg);

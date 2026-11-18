@@ -1,5 +1,5 @@
 /* ============================================================
-   Services — night panel, glassy cards with pointer spotlight.
+   Services — night panel, glassy service cards.
    ============================================================ */
 
 .services {
@@ -14,8 +14,6 @@
 }
 
 .svc {
-  --mx: 50%;
-  --my: 0%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,7 +23,6 @@
   border: 1px solid var(--line-on-dark);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  isolation: isolate;
   transition:
     border-color var(--dur-base) var(--ease-out),
     transform 0.5s var(--ease-out),
@@ -35,19 +32,6 @@
 .svc:focus-within {
   border-color: rgba(255, 106, 61, 0.45);
   transform: translateY(-4px);
-}
-/* Pointer-following spotlight, only while hovered */
-.svc::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(380px circle at var(--mx) var(--my), rgba(255, 106, 61, 0.16), transparent 62%);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-out);
-}
-.svc:hover::before {
-  opacity: 1;
 }
 
 .svc__top {

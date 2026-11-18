@@ -60,15 +60,6 @@ button {
   color: inherit;
 }
 
-/* Serif italic accent — used for emphasised words in headings */
-h1 em,
-h2 em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
 /* ----- Focus management ----- */
 :focus {
   outline: none;
@@ -276,13 +267,6 @@ a:hover > .btn__arrow {
   letter-spacing: -0.035em;
   line-height: 0.98;
   text-wrap: balance;
-}
-.section-head__title em {
-  font-size: 1.08em;
-  color: var(--ember-deep);
-}
-.on-dark .section-head__title em {
-  color: var(--peach);
 }
 .section-head__note {
   justify-self: end;

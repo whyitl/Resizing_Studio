@@ -41,11 +41,6 @@
   margin-bottom: clamp(28px, 4vw, 52px);
   text-wrap: balance;
 }
-.contact__heading em {
-  display: inline-block;
-  font-size: 1.06em;
-  color: var(--ember-deep);
-}
 
 .contact__form-col {
   min-width: 0;
