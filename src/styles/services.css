@@ -1,5 +1,5 @@
 /* ============================================================
-   Services — night panel, glassy service cards.
+   Services — full-bleed night band, three hairline-ruled columns.
    ============================================================ */
 
 .services {
@@ -9,8 +9,8 @@
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 16px);
-  padding: 0 var(--gutter);
+  margin: 0 var(--gutter);
+  border-bottom: 1px solid var(--line-on-dark-strong);
 }
 
 .svc {
@@ -18,20 +18,12 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: clamp(24px, 2.6vw, 36px);
-  background: linear-gradient(180deg, rgba(244, 240, 232, 0.05), rgba(244, 240, 232, 0.012));
-  border: 1px solid var(--line-on-dark);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition:
-    border-color var(--dur-base) var(--ease-out),
-    transform 0.5s var(--ease-out),
-    background-color var(--dur-base) var(--ease-out);
+  padding: clamp(8px, 1vw, 12px) clamp(20px, 2.4vw, 36px) clamp(36px, 4vw, 56px);
+  border-left: 1px solid var(--line-on-dark);
 }
-.svc:hover,
-.svc:focus-within {
-  border-color: rgba(255, 106, 61, 0.45);
-  transform: translateY(-4px);
+.svc:first-child {
+  border-left: 0;
+  padding-left: 0;
 }
 
 .svc__top {
@@ -44,25 +36,22 @@
 .svc__icon {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-xs);
   color: var(--ember);
-  background: rgba(255, 106, 61, 0.1);
-  border: 1px solid rgba(255, 106, 61, 0.28);
+  background: rgba(255, 106, 61, 0.12);
   transition:
-    background var(--dur-base) var(--ease-out),
-    color var(--dur-base) var(--ease-out),
-    transform 0.5s var(--ease-spring);
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 .svc__icon svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 .svc:hover .svc__icon {
   background: var(--ember);
   color: var(--ink);
-  transform: rotate(-6deg) scale(1.06);
 }
 
 .svc__num {
@@ -74,11 +63,11 @@
 }
 
 .svc__title {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-xl);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
 .svc__desc {
@@ -89,9 +78,9 @@
   text-wrap: pretty;
 }
 
-/* ----- Pricing bar ----- */
+/* ----- Pricing row ----- */
 .services__foot {
-  padding: clamp(14px, 1.6vw, 22px) var(--gutter) 0;
+  margin: 0 var(--gutter);
 }
 
 .services__pricing {
@@ -99,36 +88,26 @@
   align-items: center;
   gap: clamp(12px, 2vw, 24px);
   width: 100%;
-  min-height: 64px;
-  padding: 10px 10px 10px 12px;
+  min-height: 72px;
+  padding: 14px 0;
   font-size: var(--text-base);
-  font-weight: 500;
   color: var(--on-night);
-  background: rgba(244, 240, 232, 0.03);
-  border: 1px solid var(--line-on-dark);
-  border-radius: var(--radius-pill);
-  transition:
-    background var(--dur-base) var(--ease-out),
-    border-color var(--dur-base) var(--ease-out);
-}
-.services__pricing:hover {
-  background: rgba(244, 240, 232, 0.07);
-  border-color: var(--line-on-dark-strong);
+  border-bottom: 1px solid var(--line-on-dark-strong);
 }
 .services__pricing-tag {
   flex-shrink: 0;
   background: var(--ember);
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
-  padding: 8px 20px;
-  border-radius: var(--radius-pill);
-  transition: transform var(--dur-base) var(--ease-spring);
+  padding: 6px 14px;
+  border-radius: var(--radius-xs);
+  transition: background-color var(--dur-fast) var(--ease-out);
 }
 .services__pricing:hover .services__pricing-tag {
-  transform: rotate(-3deg) scale(1.04);
+  background: var(--paper);
 }
 .services__pricing-text {
   flex: 1;
@@ -142,39 +121,48 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1px solid var(--line-on-dark-strong);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xs);
+  background: rgba(244, 240, 232, 0.08);
   font-size: 18px;
   transition:
-    background var(--dur-base) var(--ease-out),
-    color var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-spring),
-    border-color var(--dur-base) var(--ease-out);
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 .services__pricing:hover .services__pricing-arrow {
   background: var(--paper);
-  border-color: var(--paper);
   color: var(--ink);
-  transform: rotate(-45deg);
 }
 
 @media (max-width: 960px) {
   .services__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .svc:last-child {
+  .svc:nth-child(3) {
     grid-column: 1 / -1;
-    min-height: 0;
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line-on-dark);
+    padding-top: 24px;
+  }
+  .svc:nth-child(3) .svc__top {
+    padding-bottom: 32px;
   }
 }
 @media (max-width: 600px) {
   .services__grid {
     grid-template-columns: 1fr;
   }
-  .svc {
-    min-height: 0;
+  .svc,
+  .svc:nth-child(3) {
+    border-left: 0;
+    padding: 24px 0 32px;
+    border-top: 1px solid var(--line-on-dark);
+  }
+  .svc:first-child {
+    border-top: 0;
+    padding-top: 4px;
   }
   .svc__top {
     padding-bottom: 28px;
@@ -184,11 +172,9 @@
   }
   .services__pricing {
     flex-wrap: wrap;
-    border-radius: var(--radius-lg);
-    padding: 16px;
   }
   .services__pricing-text {
-    flex-basis: calc(100% - 70px);
+    flex-basis: calc(100% - 64px);
     order: 2;
   }
   .services__pricing-arrow {

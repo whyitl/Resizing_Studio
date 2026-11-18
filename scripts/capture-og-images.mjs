@@ -47,7 +47,7 @@ async function main() {
   })
 
   for (const { url, file } of captures) {
-    await page.goto(`${baseUrl}${url}`, { waitUntil: 'networkidle' })
+    await page.goto(`${baseUrl}${url}`, { waitUntil: 'load' })
     await page.evaluate(() => document.fonts.ready)
     await page.waitForTimeout(3200) // let the hero frame finish its resize intro
     await page.screenshot({

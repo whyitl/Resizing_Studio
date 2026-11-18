@@ -383,7 +383,7 @@
   gap: 8px;
   min-height: 36px;
   padding: 0 14px;
-  border: 1px solid var(--line-on-dark-strong);
+  background: rgba(244, 240, 232, 0.08);
   border-radius: var(--radius-pill);
   color: var(--on-night);
   transition:
@@ -397,7 +397,6 @@
 }
 .footer__totop:hover {
   background: var(--ember);
-  border-color: var(--ember);
   color: var(--ink);
 }
 .footer__totop:hover span {

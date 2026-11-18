@@ -3,8 +3,10 @@
    Palette: "Prairie Dusk" — sampled from the Calgary skyline at
    sundown. Warm bone paper, slate-night ink, an ember signal
    colour and soft dusk gradients (sky blue → lavender → peach).
-   Type: Bricolage Grotesque (display) / Instrument Sans (body) /
-         Spline Sans Mono (data); Instrument Serif only on the 404 digit.
+   Type: Instrument Sans (headings at regular weight + body) /
+         Spline Sans Mono (labels, data); Bricolage Grotesque only for
+         the RESIZING STUDIO wordmark; Instrument Serif on the 404 digit.
+   Shape: square, flat, hairline-ruled — Swiss rather than bubbly.
    ============================================================ */
 
 :root {
@@ -53,15 +55,17 @@
   --off: #f0a04b;
 
   /* ----- Texture ----- */
-  --bg-dots-image: radial-gradient(circle, rgba(20, 23, 28, 0.1) 1px, transparent 1.2px);
-  --bg-dots-size: 24px;
+  /* Sparse registration crosses — a quiet layout grid, not wallpaper */
+  --bg-grid-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M60 55.5v9M55.5 60h9' stroke='%2314171c' stroke-opacity='.2'/%3E%3C/svg%3E");
+  --bg-grid-size: 120px;
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --dusk-glow:
     radial-gradient(120% 80% at 100% 0%, rgba(127, 150, 190, 0.18), transparent 55%),
     radial-gradient(90% 70% at 0% 100%, rgba(255, 106, 61, 0.12), transparent 60%);
 
   /* ----- Typography ----- */
-  --font-display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif; /* wordmark only */
+  --font-head: 'Instrument Sans', system-ui, sans-serif; /* headings: regular weight, tight */
   --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Instrument Sans', system-ui, sans-serif;
   --font-mono: 'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -74,8 +78,8 @@
   --text-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);/* 15–17 */
   --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);    /* 18–22 */
   --text-xl: clamp(1.375rem, 1.2rem + 0.9vw, 1.875rem);     /* 22–30 */
-  --text-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);          /* 32–56 */
-  --text-3xl: clamp(2.5rem, 1.6rem + 4.4vw, 5.5rem);        /* 40–88 */
+  --text-2xl: clamp(2.25rem, 1.6rem + 3vw, 4.25rem);        /* 36–68 */
+  --text-3xl: clamp(2.75rem, 1.6rem + 5vw, 6.25rem);        /* 44–100 */
   --text-hero: clamp(3.1rem, 14.6vw, 14rem);                /* 50–224 */
 
   /* ----- Space & shape ----- */
@@ -88,27 +92,29 @@
   --space-2xl: clamp(4.5rem, 4rem + 5vw, 9rem);
 
   --gutter: clamp(1.125rem, 0.9rem + 1.8vw, 2.75rem);
-  --panel-inset: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+  --panel-inset: 0; /* bands run full-bleed */
   --content-max: 1360px;
 
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-panel: clamp(22px, 2.8vw, 40px);
-  --radius-pill: 999px;
+  /* Square geometry: crisp 2–4px corners, no pills */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-panel: 0;
+  --radius-pill: 2px;
 
   /* ----- Elevation ----- */
-  --shadow-pill: 0 1px 2px rgba(20, 23, 28, 0.06), 0 8px 24px rgba(20, 23, 28, 0.08);
-  --shadow-card: 0 2px 6px rgba(20, 23, 28, 0.06), 0 18px 44px rgba(20, 23, 28, 0.12);
-  --shadow-float: 0 4px 10px rgba(20, 23, 28, 0.08), 0 30px 70px -10px rgba(20, 23, 28, 0.3);
+  /* Flat by default; depth only where an object floats (screenshots) */
+  --shadow-pill: none;
+  --shadow-card: none;
+  --shadow-float: 0 2px 4px rgba(20, 23, 28, 0.06), 0 24px 48px -16px rgba(20, 23, 28, 0.32);
   --shadow-image: 0 14px 34px rgba(20, 23, 28, 0.22);
 
   /* ----- Motion ----- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring: cubic-bezier(0.34, 1.4, 0.44, 1);
-  --dur-fast: 0.18s;
+  --dur-fast: 0.12s;
   --dur-base: 0.3s;
   --dur-slow: 0.6s;
 }

@@ -33,10 +33,10 @@
 }
 
 .contact__heading {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-3xl);
-  font-weight: 800;
-  letter-spacing: -0.045em;
+  font-weight: 500;
+  letter-spacing: -0.05em;
   line-height: 0.95;
   margin-bottom: clamp(28px, 4vw, 52px);
   text-wrap: balance;
@@ -79,9 +79,9 @@
 }
 
 .contact__section-title {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.2;
   color: var(--ink);
@@ -120,7 +120,7 @@
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--line-strong);
-  border-radius: 12px;
+  border-radius: var(--radius-xs);
   padding: 13px 16px;
   transition:
     border-color var(--dur-fast) var(--ease-out),
@@ -215,7 +215,6 @@
     radial-gradient(90% 60% at 100% 0%, rgba(127, 150, 190, 0.28), transparent 65%),
     radial-gradient(90% 60% at 0% 110%, rgba(255, 106, 61, 0.3), transparent 65%);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-float);
 }
 
 .contact__sidebar-label {
@@ -228,7 +227,7 @@
 }
 
 .contact__sidebar-text {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-lg);
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -277,10 +276,10 @@
   display: inline-flex;
   align-items: center;
   min-height: 42px;
-  border: 1px solid var(--line-on-dark-strong);
+  background: rgba(244, 240, 232, 0.08);
   color: var(--on-night);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 500;
   padding: 6px 18px;
   border-radius: var(--radius-pill);
   transition:
@@ -291,14 +290,11 @@
 }
 .contact__pill:first-child {
   background: var(--ember);
-  border-color: var(--ember);
   color: var(--ink);
 }
 a.contact__pill:hover {
-  border-color: var(--paper);
   background: var(--paper);
   color: var(--ink);
-  transform: translateY(-2px);
 }
 
 /* ----- Responsive ----- */

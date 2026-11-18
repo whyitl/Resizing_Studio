@@ -56,10 +56,10 @@
 }
 
 .cta__title {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-3xl);
-  font-weight: 800;
-  letter-spacing: -0.045em;
+  font-weight: 500;
+  letter-spacing: -0.05em;
   line-height: 0.95;
   color: var(--on-night);
   text-wrap: balance;
@@ -100,8 +100,6 @@
   text-transform: uppercase;
   padding: 10px 18px;
   border-radius: var(--radius-pill);
-  transform: rotate(-2deg);
-  box-shadow: 0 12px 30px -10px rgba(255, 106, 61, 0.7);
 }
 .cta__badge::before {
   content: '';
@@ -145,9 +143,9 @@
 }
 
 .cta__value {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--on-night);
   width: fit-content;
@@ -178,10 +176,10 @@ a.cta__value:hover {
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  border: 1px solid var(--line-on-dark-strong);
+  background: rgba(244, 240, 232, 0.08);
   color: var(--on-night);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 500;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
   transition:
@@ -197,10 +195,8 @@ a.cta__value:hover {
   transition: transform var(--dur-base) var(--ease-spring);
 }
 .cta__social:hover {
-  border-color: var(--paper);
   background: var(--paper);
   color: var(--ink);
-  transform: translateY(-2px);
 }
 .cta__social:hover::after {
   transform: translate(2px, -2px);

@@ -24,8 +24,6 @@ body {
   line-height: 1.5;
   color: var(--ink);
   background-color: var(--paper);
-  background-image: var(--bg-dots-image);
-  background-size: var(--bg-dots-size) var(--bg-dots-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -135,89 +133,89 @@ button {
   color: var(--on-night-muted);
 }
 
-/* Buttons */
+/* Buttons — square, flat, quick. Regular-weight labels; colour does the work. */
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6em;
-  min-height: 48px;
-  padding: 0.8em 1.6em;
+  min-height: 44px;
+  padding: 0.65em 1.2em;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.005em;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  isolation: isolate;
-  overflow: hidden;
   transition:
-    background var(--dur-base) var(--ease-out),
-    color var(--dur-base) var(--ease-out),
-    border-color var(--dur-base) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-base) var(--ease-out);
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
 }
 .btn:active {
-  transform: scale(0.97);
+  transform: translateY(1px);
 }
 
-/* Primary: ink pill that floods with ember on hover */
+/* Primary: solid ink, snaps to ember on hover */
 .btn--primary {
   background: var(--ink);
   color: var(--paper);
 }
-.btn--primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--ember);
-  border-radius: inherit;
-  transform: translateY(101%);
-  transition: transform 0.45s var(--ease-out);
-}
 .btn--primary:hover {
+  background: var(--ember);
   color: var(--ink);
-  box-shadow: 0 10px 30px -8px rgba(255, 106, 61, 0.55);
-}
-.btn--primary:hover::before {
-  transform: none;
 }
 
-/* Ember: the signal button on dark panels */
+/* Ember: the signal button on dark bands */
 .btn--ember {
   background: var(--ember);
   color: var(--ink);
 }
 .btn--ember:hover {
-  background: var(--ember-hover);
-  box-shadow: 0 10px 30px -8px rgba(255, 106, 61, 0.6);
+  background: var(--paper);
 }
 
+/* Ghost: a tinted chip rather than an outline */
 .btn--ghost {
-  background: rgba(251, 249, 244, 0.5);
+  background: rgba(20, 23, 28, 0.06);
   color: var(--ink);
-  border-color: var(--line-strong);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 .btn--ghost:hover {
-  border-color: var(--ink);
-  background: var(--paper-raised);
+  background: rgba(20, 23, 28, 0.12);
 }
 
 .btn--sm {
-  min-height: 38px;
-  padding: 0.45em 1.15em;
+  min-height: 36px;
+  padding: 0.4em 0.95em;
+}
+
+/* Chip — small tinted label/link, used for tags and secondary links */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 10px;
+  font-size: var(--text-sm);
+  background: rgba(20, 23, 28, 0.06);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+a.chip:hover {
+  background: rgba(20, 23, 28, 0.12);
+}
+.on-dark .chip {
+  background: rgba(244, 240, 232, 0.08);
+}
+.on-dark a.chip:hover {
+  background: rgba(244, 240, 232, 0.16);
 }
 
 /* Arrow inside buttons/links nudges on hover */
 .btn__arrow {
   display: inline-block;
-  transition: transform var(--dur-base) var(--ease-spring);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 .btn:hover .btn__arrow,
 a:hover > .btn__arrow {
@@ -228,7 +226,7 @@ a:hover > .btn__arrow {
    Section scaffolding
    ============================================================ */
 
-/* Dark sections float as rounded night panels inset from the page edge */
+/* Dark sections are full-bleed night bands */
 .section-panel {
   position: relative;
   background-color: var(--night);
@@ -245,8 +243,12 @@ a:hover > .btn__arrow {
   grid-template-columns: auto 1fr auto;
   align-items: end;
   gap: var(--space-sm) var(--space-md);
-  padding: 0 var(--gutter);
-  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  margin: 0 var(--gutter) clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  padding-bottom: clamp(18px, 2vw, 26px);
+  border-bottom: 1px solid var(--ink);
+}
+.on-dark .section-head {
+  border-bottom-color: var(--line-on-dark-strong);
 }
 .section-head__index {
   align-self: start;
@@ -261,16 +263,16 @@ a:hover > .btn__arrow {
   color: var(--ember);
 }
 .section-head__title {
-  font-family: var(--font-display);
+  font-family: var(--font-head);
   font-size: var(--text-2xl);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
   text-wrap: balance;
 }
 .section-head__note {
   justify-self: end;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.35em;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
