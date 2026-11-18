@@ -66,7 +66,7 @@ export function renderSeoHead(page) {
     `<meta name="description" content="${escapeAttr(page.description)}" />`,
     `<link rel="canonical" href="${canonical}" />`,
     `<meta name="robots" content="${page.noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'}" />`,
-    `<meta name="theme-color" content="#3b5249" />`,
+    `<meta name="theme-color" content="#f4f0e8" />`,
     `<link rel="apple-touch-icon" href="/favicon.svg" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${escapeAttr(SITE.name)}" />`,

@@ -1,4 +1,4 @@
-<footer class="footer" id="footer">
+<footer class="footer on-dark" id="footer">
   <div class="footer__inner">
     <div class="footer__top">
       <div class="footer__col">
@@ -39,25 +39,72 @@
       </div>
     </div>
 
+    <!-- Studio telemetry: live readouts, all computed client-side -->
+    <div class="footer__telemetry" role="group" aria-label="Studio telemetry">
+      <div class="tele tele--weather" id="weather">
+        <span class="tele__label">Calgary, AB</span>
+        <div class="tele__value">
+          <span class="tele__icon" data-weather-icon aria-hidden="true"></span>
+          <span data-weather-temp>--°C</span>
+        </div>
+        <span class="tele__meta">
+          <span data-weather-label>Checking the sky…</span>
+          <span class="tele__wind" data-weather-wind></span>
+        </span>
+      </div>
+
+      <div class="tele tele--sun" id="sun" data-phase="day">
+        <span class="tele__label">Sun over YYC</span>
+        <svg class="sun" viewBox="0 0 160 62" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="sun-grad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#f3c9a4" />
+              <stop offset="1" stop-color="#ff6a3d" />
+            </linearGradient>
+          </defs>
+          <path class="sun__night" d="M148 46 A68 14 0 0 1 12 46" />
+          <path class="sun__track" d="M12 46 A68 38 0 0 1 148 46" />
+          <path class="sun__progress" data-sun-progress d="M12 46 A68 38 0 0 1 148 46" pathLength="100" stroke-dasharray="0 100" />
+          <line class="sun__horizon" x1="0" y1="46" x2="160" y2="46" />
+          <g class="sun__body" data-sun-body transform="translate(12 46)">
+            <circle class="sun__halo" r="9" />
+            <circle class="sun__core" r="4.5" />
+          </g>
+        </svg>
+        <span class="tele__meta">
+          <span data-sun-rise>↑ --:--</span>
+          <span class="sun__state" data-sun-state>—</span>
+          <span data-sun-set>↓ --:--</span>
+        </span>
+      </div>
+
+      <div class="tele tele--viewport" id="viewport">
+        <span class="tele__label">Your viewport</span>
+        <div class="tele__value"><span data-vp-size>—</span></div>
+        <span class="tele__meta">
+          <span data-vp-bp>—</span>
+          <span data-vp-dpr>@1x</span>
+        </span>
+      </div>
+    </div>
+
     <div class="footer__wordmark">
-      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗ 
-██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝ 
+      <span class="footer__ascii-hint" aria-hidden="true">Interactive — move across it</span>
+      <pre class="ascii" id="ascii" aria-hidden="true">██████╗  ███████╗ ███████╗ ██╗ ███████╗ ██╗ ███╗   ██╗  ██████╗
+██╔══██╗ ██╔════╝ ██╔════╝ ██║ ╚══███╔╝ ██║ ████╗  ██║ ██╔════╝
 ██████╔╝ █████╗   ███████╗ ██║   ███╔╝  ██║ ██╔██╗ ██║ ██║  ███╗
 ██╔══██╗ ██╔══╝   ╚════██║ ██║  ███╔╝   ██║ ██║╚██╗██║ ██║   ██║
 ██║  ██║ ███████╗ ███████║ ██║ ███████╗ ██║ ██║ ╚████║ ╚██████╔╝
 ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝  ╚═══╝  ╚═════╝ </pre>
-      <div class="footer__weather" id="weather" aria-label="Current weather in Calgary">
-        <span class="footer__weather-location">Calgary, AB</span>
-        <span class="footer__weather-icon" aria-hidden="true"></span>
-        <div class="footer__weather-info">
-          <span class="footer__weather-temp">--°C</span>
-          <span class="footer__weather-label"></span>
-        </div>
-      </div>
     </div>
 
     <div class="footer__bottom">
-      <span>&copy; <span id="year"></span> Resizing Studio</span>
+      <div class="footer__bottom-group">
+        <span>&copy; <span id="year"></span> Resizing Studio</span>
+        <span>51.0447° N, 114.0719° W · 1,045 m</span>
+        <span class="footer__build">Build <span class="footer__build-sha" id="build-sha">dev</span> <span id="build-date"></span></span>
+      </div>
+      <a href="#main-content" class="footer__totop">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </div>
 </footer>

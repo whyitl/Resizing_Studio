@@ -1,22 +1,30 @@
 /* ============================================================
-   Footer — deep forest panel with ASCII wordmark & weather.
+   Footer — night panel. Link columns, a "studio telemetry"
+   strip (weather, live sun arc, viewport), an
+   interactive full-width ASCII wordmark and a build stamp.
    ============================================================ */
 
 .footer {
-  background: var(--forest-deep);
-  color: var(--paper);
+  position: relative;
+  isolation: isolate;
+  background-color: #0e1015;
+  background-image:
+    var(--grain),
+    radial-gradient(70% 40% at 50% 0%, rgba(51, 56, 90, 0.55), transparent 70%);
+  color: var(--on-night);
   margin: 0 var(--panel-inset) var(--panel-inset);
   border-radius: var(--radius-panel);
   overflow: clip;
 }
 
 .footer__inner {
-  padding: clamp(44px, 5vw, 64px) var(--gutter) 26px;
+  padding: clamp(44px, 5vw, 72px) var(--gutter) 24px;
 }
 
+/* ----- Link columns ----- */
 .footer__top {
   display: flex;
-  gap: clamp(36px, 5vw, 70px);
+  gap: clamp(32px, 5vw, 76px);
   flex-wrap: wrap;
   padding-bottom: clamp(36px, 5vw, 56px);
 }
@@ -24,7 +32,7 @@
 .footer__col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 .footer__label {
   font-family: var(--font-mono);
@@ -32,37 +40,50 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted-on-dark);
-  margin-bottom: 10px;
+  color: var(--on-night-muted);
+  margin-bottom: 12px;
 }
 .footer__label--sentence {
   text-transform: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 .footer__col a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
+  gap: 6px;
+  min-height: 34px;
   font-size: var(--text-sm);
-  color: var(--faint-on-dark);
+  color: var(--on-night-soft);
   width: fit-content;
-  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.footer__col a::before {
+  content: '';
+  width: 0;
+  height: 1.5px;
+  background: var(--ember);
+  transition: width var(--dur-base) var(--ease-out);
 }
 .footer__col a:hover {
-  color: var(--moss);
-  transform: translateX(3px);
+  color: var(--on-night);
+}
+.footer__col a:hover::before {
+  width: 10px;
 }
 
 .footer__col--spotify {
   min-width: 280px;
-  max-width: 340px;
+  max-width: 360px;
   margin-left: auto;
 }
 .footer__spotify {
   width: 100%;
   height: 152px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 14px;
+  background: var(--night-raised);
 }
 
 @media (max-width: 700px) {
@@ -74,121 +95,267 @@
   }
 }
 
-/* ----- ASCII wordmark row ----- */
-.footer__wordmark {
+/* ============================================================
+   Telemetry strip
+   ============================================================ */
+
+.footer__telemetry {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: clamp(24px, 3vw, 32px) 0;
+  border-top: 1px solid var(--line-on-dark);
+}
+
+.tele {
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  min-height: 142px;
+  padding: 16px 18px;
+  background: rgba(244, 240, 232, 0.025);
+  isolation: isolate;
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+.tele::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(255, 106, 61, 0.1), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.tele:hover {
+  border-color: var(--line-on-dark-strong);
+}
+.tele:hover::before {
+  opacity: 1;
+}
+
+.tele__label {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding-top: 28px;
-  margin: 8px 0 6px;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-night-muted);
+}
+/* Live indicator */
+.tele__label::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px rgba(60, 207, 122, 0.16);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+.tele[data-state='offline'] .tele__label::after {
+  background: var(--on-night-muted);
+  box-shadow: none;
+  animation: none;
+}
+
+.tele__value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--on-night);
+  white-space: nowrap;
+}
+.tele__unit {
+  font-size: 0.55em;
+  letter-spacing: 0;
+  color: var(--on-night-muted);
+  margin-left: -0.3em;
+}
+
+.tele__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--on-night-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tele__icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--ember);
+}
+.tele__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tele__wind {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tele__wind-arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  color: var(--peach);
+}
+
+/* Viewport cell flashes while the window is being resized */
+.tele--viewport.is-resizing {
+  border-color: var(--ember);
+}
+.tele--viewport.is-resizing .tele__value {
+  color: var(--ember);
+}
+
+/* ----- Sun arc ----- */
+.sun {
+  width: 100%;
+  height: auto;
+  max-height: 64px;
+  align-self: center;
+  overflow: visible;
+}
+.sun__horizon {
+  stroke: var(--line-on-dark-strong);
+  stroke-width: 1;
+}
+.sun__track {
+  fill: none;
+  stroke: var(--line-on-dark-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.sun__night {
+  fill: none;
+  stroke: var(--line-on-dark);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.sun__progress {
+  fill: none;
+  stroke: url(#sun-grad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s var(--ease-out);
+}
+.sun__halo {
+  fill: var(--ember);
+  opacity: 0.22;
+}
+.sun__core {
+  fill: var(--ember);
+}
+.sun__body {
+  transition: transform 1s var(--ease-out);
+}
+.tele--sun[data-phase='night'] .sun__core {
+  fill: var(--on-night);
+}
+.tele--sun[data-phase='night'] .sun__halo {
+  fill: var(--dusk);
+  opacity: 0.25;
+}
+.tele--sun[data-phase='golden'] .sun__core {
+  fill: #ffb070;
+}
+.sun__state {
+  color: var(--peach);
+}
+
+/* ============================================================
+   ASCII wordmark — fitted full-width, cursor-reactive
+   ============================================================ */
+
+.footer__wordmark {
+  position: relative;
+  container-type: inline-size;
+  padding-top: clamp(20px, 3vw, 36px);
   border-top: 1px solid var(--line-on-dark);
 }
 
 .ascii {
-  font-family: var(--font-mono);
+  display: block;
+  width: 100%;
+  font-family: var(--font-ascii);
+  font-size: clamp(5px, calc(100cqi / 39.6), 48px);
   line-height: 1.02;
   white-space: pre;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  font-size: clamp(5px, 1.5vw, 16px);
-  flex: 1;
-  min-width: 0;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
   background: linear-gradient(
     100deg,
-    rgba(245, 243, 234, 0.5) 0%,
-    rgba(245, 243, 234, 0.5) 38%,
-    var(--moss) 50%,
-    rgba(245, 243, 234, 0.5) 62%,
-    rgba(245, 243, 234, 0.5) 100%
+    rgba(244, 240, 232, 0.34) 0%,
+    rgba(244, 240, 232, 0.34) 36%,
+    var(--peach) 46%,
+    var(--ember) 50%,
+    var(--peach) 54%,
+    rgba(244, 240, 232, 0.34) 64%,
+    rgba(244, 240, 232, 0.34) 100%
   );
-  background-size: 250% 100%;
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ascii-sweep 7s linear infinite;
-}
-.ascii::-webkit-scrollbar {
-  display: none;
+  animation: ascii-sweep 8s linear infinite;
 }
 @keyframes ascii-sweep {
   from {
-    background-position: 130% 0;
+    background-position: 135% 0;
   }
   to {
-    background-position: -30% 0;
+    background-position: -35% 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .ascii {
     animation: none;
-    -webkit-text-fill-color: rgba(245, 243, 234, 0.75);
+    background: none;
+    -webkit-text-fill-color: rgba(244, 240, 232, 0.6);
   }
 }
 
-/* ----- Weather widget ----- */
-.footer__weather {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-  color: var(--faint-on-dark);
-  padding-bottom: 2px;
-}
-.footer__weather-location {
+.footer__ascii-hint {
+  position: absolute;
+  top: clamp(20px, 3vw, 36px);
+  right: 0;
+  translate: 0 -150%;
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted-on-dark);
-  line-height: 1.1;
-  white-space: nowrap;
+  color: var(--on-night-muted);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
-.footer__weather-icon {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--moss);
-}
-.footer__weather-icon svg {
-  width: 100%;
-  height: 100%;
-}
-.footer__weather-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.footer__weather-temp {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
-}
-.footer__weather-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted-on-dark);
-  line-height: 1.1;
-}
-
-@media (max-width: 600px) {
-  .footer__wordmark {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-  }
-  .footer__weather {
-    align-self: flex-end;
-  }
+.footer__wordmark:hover .footer__ascii-hint {
+  opacity: 1;
 }
 
 /* ----- Bottom strip ----- */
@@ -196,12 +363,97 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px 24px;
+  flex-wrap: wrap;
+  margin-top: clamp(18px, 2.4vw, 28px);
+  padding-top: 18px;
+  border-top: 1px solid var(--line-on-dark);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted-on-dark);
-  padding-top: 24px;
+  color: var(--on-night-muted);
+}
+.footer__bottom-group {
+  display: flex;
+  align-items: center;
+  gap: 10px 24px;
   flex-wrap: wrap;
+}
+.footer__build {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
+}
+.footer__build-sha {
+  padding: 2px 7px;
+  border: 1px solid var(--line-on-dark-strong);
+  border-radius: 5px;
+  color: var(--on-night);
+  text-transform: none;
+}
+.footer__totop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line-on-dark-strong);
+  border-radius: var(--radius-pill);
+  color: var(--on-night);
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.footer__totop span {
+  display: inline-block;
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+.footer__totop:hover {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--ink);
+}
+.footer__totop:hover span {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 760px) {
+  .footer__telemetry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tele--viewport {
+    grid-column: 1 / -1;
+    min-height: 0;
+  }
+}
+@media (max-width: 420px) {
+  .tele {
+    min-height: 124px;
+    padding: 14px;
+  }
+  .tele__value {
+    font-size: 1.25rem;
+  }
+  .tele__icon {
+    width: 22px;
+    height: 22px;
+  }
+  .tele__meta {
+    font-size: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Minimal footer (404) */
+.footer--min .footer__bottom {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }

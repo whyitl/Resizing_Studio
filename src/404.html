@@ -8,7 +8,17 @@
 
   <main id="main-content" tabindex="-1">
     <section class="legal legal--404">
-      <p class="legal__code" aria-hidden="true"><span>4</span><span>0</span><span>4</span></p>
+      <div class="legal__code-wrap" aria-hidden="true">
+        <div class="sel-frame" data-sel-frame>
+          <span class="sel-frame__label">page.html</span>
+          <span class="sel-frame__handle sel-frame__handle--tl"></span>
+          <span class="sel-frame__handle sel-frame__handle--tr"></span>
+          <span class="sel-frame__handle sel-frame__handle--bl"></span>
+          <span class="sel-frame__handle sel-frame__handle--br"></span>
+          <span class="sel-frame__dims" data-sel-dims>— × —</span>
+        </div>
+        <p class="legal__code"><span>4</span><span>0</span><span>4</span></p>
+      </div>
       <div class="legal__header">
         <h1 class="legal__title">This page got resized out of existence.</h1>
         <p class="legal__date">Error 404 — page not found</p>
@@ -27,10 +37,14 @@
     </section>
   </main>
 
-  <footer class="footer" id="footer">
+  <footer class="footer footer--min on-dark" id="footer">
     <div class="footer__inner">
       <div class="footer__bottom">
-        <span>&copy; <span id="year"></span> Resizing Studio</span>
+        <div class="footer__bottom-group">
+          <span>&copy; <span id="year"></span> Resizing Studio</span>
+          <span>51.0447° N, 114.0719° W</span>
+        </div>
+        <a href="#main-content" class="footer__totop">Back to top <span aria-hidden="true">↑</span></a>
       </div>
     </div>
   </footer>

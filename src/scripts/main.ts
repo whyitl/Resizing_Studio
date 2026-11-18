@@ -1,11 +1,16 @@
 import { initSelectionTheme } from './selection'
-import { initNav } from './nav'
+import { initNav, initNavScrollState, initScrollSpy } from './nav'
 import { initClock } from './clock'
 import { initWeather } from './weather'
 import { initFaq, initWorkRows } from './accordions'
-import { initAsciiGlitch } from './ascii'
+import { initAscii } from './ascii'
 import { initContactForm } from './contact-form'
 import { initReveals } from './reveal'
+import { initSelFrames } from './sel-frame'
+import { initSpotlights } from './spotlight'
+import { initSun } from './sun'
+import { initViewportReadout } from './viewport'
+import { initBuildInfo } from './build-info'
 
 // Marks that JS is active so CSS can safely hide .reveal targets
 document.documentElement.classList.add('js')
@@ -30,13 +35,22 @@ Built with care :)
 
 initSelectionTheme()
 initNav()
+initNavScrollState()
+initScrollSpy()
 initClock()
-void initWeather()
+initSelFrames()
 initFaq()
 initWorkRows()
-initAsciiGlitch()
 initContactForm()
 initReveals()
+initSpotlights()
+
+// Footer telemetry
+void initWeather()
+initSun()
+initViewportReadout()
+initBuildInfo()
+initAscii()
 
 // Footer copyright year
 const yearEl = document.getElementById('year')

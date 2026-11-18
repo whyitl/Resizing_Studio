@@ -1,25 +1,76 @@
 /* ============================================================
-   Hero — oversized wordmark, staggered load reveal.
+   Hero — oversized wordmark inside a live "selection frame",
+   dusk glow behind, staggered load reveal.
    ============================================================ */
 
 .hero {
-  padding: clamp(40px, 6vw, 72px) var(--gutter) var(--space-2xl);
+  position: relative;
+  isolation: isolate;
+  padding: clamp(56px, 7vw, 104px) var(--gutter) clamp(56px, 6vw, 96px);
 }
 
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: clamp(18px, 3vw, 34px);
-  animation: rise-in 0.7s var(--ease-out) both;
+/* Soft dusk bloom behind the wordmark */
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -120px -10% auto auto;
+  width: min(900px, 80vw);
+  aspect-ratio: 1.3;
+  background:
+    radial-gradient(closest-side at 62% 42%, rgba(243, 201, 164, 0.75), transparent 72%),
+    radial-gradient(closest-side at 34% 60%, rgba(142, 134, 184, 0.35), transparent 70%),
+    radial-gradient(closest-side at 74% 74%, rgba(255, 106, 61, 0.22), transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  animation: rise-in 1.6s var(--ease-out) both;
 }
-.hero__eyebrow-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--moss);
-  border: 1px solid var(--forest);
-  flex-shrink: 0;
+
+.hero__canvas {
+  position: relative;
+  animation: rise-in 0.9s var(--ease-out) 0.05s both;
+}
+
+/* ----- The live frame around the wordmark ----- */
+.hero__frame {
+  animation: frame-resize 1.5s var(--ease-in-out) 0.55s both;
+}
+.hero__frame .sel-frame__cursor {
+  animation: cursor-out 0.5s var(--ease-out) 2.5s forwards;
+}
+@keyframes frame-resize {
+  0% {
+    inset: -14px 52% 54% -14px;
+    opacity: 0;
+  }
+  14% {
+    inset: -14px 52% 54% -14px;
+    opacity: 1;
+  }
+  100% {
+    inset: -14px;
+    opacity: 1;
+  }
+}
+@keyframes frame-resize-sm {
+  0% {
+    inset: -10px 40% 50% -10px;
+    opacity: 0;
+  }
+  14% {
+    inset: -10px 40% 50% -10px;
+    opacity: 1;
+  }
+  100% {
+    inset: -10px;
+    opacity: 1;
+  }
+}
+@keyframes cursor-out {
+  to {
+    opacity: 0;
+    translate: 6px 6px;
+  }
 }
 
 .hero__title {
@@ -34,58 +85,64 @@
   font-family: var(--font-display);
   font-size: var(--text-hero);
   font-weight: 800;
-  font-stretch: 95%;
-  letter-spacing: -0.045em;
-  line-height: 0.84;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
   color: var(--ink);
 }
 .hero__word--left {
   text-align: left;
-  animation: rise-in 0.8s var(--ease-out) 0.08s both;
+  margin-left: -0.04em;
 }
 .hero__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(16px, 3vw, 32px);
-  animation: rise-in 0.8s var(--ease-out) 0.18s both;
+  gap: clamp(14px, 3vw, 40px);
 }
 .hero__row .hero__word {
   text-align: right;
   margin-left: auto;
+  margin-right: -0.02em;
 }
 
+/* Pill-shaped photo that literally resizes on hover */
 .hero__thumb {
-  width: clamp(130px, 14vw, 220px);
-  height: clamp(100px, 10.5vw, 165px);
+  width: calc(var(--text-hero) * 1.18);
+  height: calc(var(--text-hero) * 0.6);
   object-fit: cover;
   object-position: center 62%;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 0 0 1px rgba(20, 23, 28, 0.08),
+    var(--shadow-card);
   flex-shrink: 0;
-  transform: rotate(-2deg);
-  transition: transform var(--dur-slow) var(--ease-spring);
+  transition:
+    width 0.7s var(--ease-spring),
+    object-position 1.2s var(--ease-out);
 }
 .hero__thumb:hover {
-  transform: rotate(0deg) scale(1.03);
+  width: calc(var(--text-hero) * 1.75);
+  object-position: center 50%;
 }
 
+/* ----- Intro + actions ----- */
 .hero__meta {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
   gap: var(--space-lg);
-  margin-top: clamp(40px, 6vw, 76px);
-  flex-wrap: wrap;
-  animation: rise-in 0.8s var(--ease-out) 0.3s both;
+  margin-top: clamp(56px, 7vw, 104px);
+  padding-top: clamp(22px, 2.4vw, 32px);
+  border-top: 1px solid var(--line-strong);
+  animation: rise-in 0.9s var(--ease-out) 0.3s both;
 }
 
 .hero__intro {
-  max-width: 44ch;
-  font-size: var(--text-lg);
-  line-height: 1.55;
-  color: var(--ink-soft);
+  max-width: 40ch;
+  font-size: var(--text-xl);
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--muted);
   text-wrap: pretty;
 }
 .hero__intro strong {
@@ -95,6 +152,48 @@
 
 .hero__actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .hero__meta {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 52px;
+  }
+  .hero__frame {
+    animation-name: frame-resize-sm;
+  }
+  .hero__frame .sel-frame__handle {
+    width: 9px;
+    height: 9px;
+  }
+  .hero__thumb {
+    width: 96px;
+    height: 46px;
+  }
+  .hero__thumb:hover {
+    width: 120px;
+  }
+  .hero__intro {
+    font-size: var(--text-lg);
+  }
+  .hero__actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__frame {
+    animation: none;
+  }
+  .hero__frame .sel-frame__cursor {
+    display: none;
+  }
 }

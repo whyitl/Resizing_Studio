@@ -1,5 +1,6 @@
 /* ============================================================
-   Work — index-style expandable rows with image galleries.
+   Work — index-style expandable rows; each opens onto a dusk
+   "stage" with overlapping browser frames.
    ============================================================ */
 
 .work {
@@ -13,7 +14,7 @@
 .worklist__head,
 .wrow__bar {
   display: grid;
-  grid-template-columns: 90px 1.2fr 1fr 1.3fr 32px;
+  grid-template-columns: 84px minmax(0, 1.5fr) minmax(0, 0.8fr) minmax(0, 1.1fr) 44px;
   gap: 20px;
   align-items: center;
   text-align: left;
@@ -26,26 +27,23 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
 }
 
 .wrow {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .wrow__bar {
+  position: relative;
   width: 100%;
   background: none;
   border: 0;
   cursor: pointer;
   color: var(--ink);
-  padding: 20px 0;
-  min-height: 64px;
-  transition: color var(--dur-fast) var(--ease-out);
-}
-.wrow__bar:hover .wrow__client {
-  color: var(--forest);
+  padding: clamp(20px, 2.2vw, 30px) 0;
+  min-height: 72px;
 }
 
 .wrow__year {
@@ -55,10 +53,19 @@
 }
 .wrow__client {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  transition: color var(--dur-fast) var(--ease-out);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    transform 0.5s var(--ease-out);
+}
+.wrow__bar:hover .wrow__client {
+  transform: translateX(8px);
+}
+.wrow.is-open .wrow__client {
+  color: var(--ember-deep);
 }
 .wrow__type {
   font-size: var(--text-sm);
@@ -76,7 +83,7 @@
   color: var(--ink-soft);
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
@@ -87,44 +94,37 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line-strong);
   border-radius: 50%;
-  color: var(--muted);
+  color: var(--ink);
   transition:
-    transform var(--dur-base) var(--ease-spring),
+    transform 0.5s var(--ease-spring),
     background var(--dur-base) var(--ease-out),
     color var(--dur-base) var(--ease-out),
     border-color var(--dur-base) var(--ease-out);
 }
 .wrow__indicator svg {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
+}
+.wrow__bar:hover .wrow__indicator {
+  border-color: var(--ink);
+  background: var(--paper-raised);
 }
 .wrow.is-open .wrow__indicator {
   transform: rotate(180deg);
-  background: var(--forest);
-  border-color: var(--forest);
-  color: var(--paper);
-}
-.wrow__bar:hover .wrow__indicator {
-  border-color: var(--forest);
-  color: var(--forest);
-}
-.wrow.is-open .wrow__bar:hover .wrow__indicator {
-  color: var(--paper);
-}
-
-.wrow.is-open .wrow__client {
-  color: var(--forest);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--ember);
 }
 
 /* Expanding panel (grid-rows trick for smooth height animation) */
 .wrow__panel {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.45s var(--ease-out);
+  transition: grid-template-rows 0.6s var(--ease-out);
 }
 .wrow.is-open .wrow__panel {
   grid-template-rows: 1fr;
@@ -134,39 +134,106 @@
   min-height: 0;
 }
 
+/* ----- The stage ----- */
 .wrow__gallery {
-  display: flex;
-  gap: 14px;
-  margin: 10px 0 20px;
+  --stage-a: #cfd5ea;
+  --stage-b: #f3d3b6;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  margin: 4px 0 22px;
+  padding: clamp(22px, 4.5vw, 64px);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle, rgba(20, 23, 28, 0.08) 1px, transparent 1.2px) 0 0 / 18px 18px,
+    radial-gradient(80% 90% at 0% 0%, var(--stage-a), transparent 70%),
+    radial-gradient(80% 90% at 100% 100%, var(--stage-b), transparent 70%),
+    var(--paper-sunk);
+  overflow: hidden;
+  isolation: isolate;
 }
+.wrow:nth-of-type(2n) .wrow__gallery {
+  --stage-a: #f6cdb3;
+  --stage-b: #c9c3e2;
+}
+
+.browser {
+  position: relative;
+  grid-row: 1;
+  background: var(--paper-raised);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgba(20, 23, 28, 0.08),
+    var(--shadow-float);
+  overflow: hidden;
+  transition: transform 0.8s var(--ease-out);
+}
+.browser--wide {
+  grid-column: 1 / span 8;
+  margin-bottom: clamp(48px, 9vw, 150px);
+  z-index: 1;
+}
+.browser--narrow {
+  grid-column: 6 / span 7;
+  margin-top: clamp(64px, 11vw, 180px);
+  z-index: 2;
+}
+.wrow__gallery:hover .browser--wide {
+  transform: translate(-6px, -6px);
+}
+.wrow__gallery:hover .browser--narrow {
+  transform: translate(6px, 6px);
+}
+
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  background: #f1ede5;
+  border-bottom: 1px solid rgba(20, 23, 28, 0.07);
+}
+.browser__bar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d9d2c4;
+}
+.browser__bar span:nth-child(1) {
+  background: #ff7a5c;
+}
+.browser__bar span:nth-child(2) {
+  background: #f4c25b;
+}
+.browser__bar span:nth-child(3) {
+  background: #6fcf8a;
+}
+.browser__bar::after {
+  content: '';
+  flex: 0 1 38%;
+  height: 14px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: rgba(20, 23, 28, 0.06);
+  transform: translateX(-24px);
+}
+
 .wrow__img {
-  min-width: 0;
   width: 100%;
-  height: clamp(180px, 30vw, 320px);
+  height: auto;
+  aspect-ratio: 1700 / 844;
   object-fit: cover;
   object-position: top center;
-  background-color: var(--forest-soft);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-.wrow__img:hover {
-  transform: translateY(-4px);
-}
-.wrow__img--wide {
-  flex: 1.5;
-}
-.wrow__img--narrow {
-  flex: 1.3;
+  background-color: var(--paper-sunk);
 }
 
 .wrow__desc {
-  max-width: 62ch;
-  font-size: var(--text-sm);
+  max-width: 64ch;
+  font-size: var(--text-base);
   line-height: 1.65;
   color: var(--ink-soft);
-  padding-bottom: 28px;
+  padding-bottom: clamp(28px, 3vw, 40px);
   text-wrap: pretty;
 }
 
@@ -175,21 +242,25 @@
   .worklist__head {
     display: none;
   }
+  .worklist {
+    border-top: 1px solid var(--ink);
+  }
   .wrow__bar {
-    grid-template-columns: 1fr 32px;
+    grid-template-columns: 1fr 44px;
     grid-template-areas:
       'year indicator'
       'client indicator'
       'type indicator'
       'tech indicator';
-    gap: 4px 12px;
-    padding: 20px 0;
+    gap: 6px 12px;
+    padding: 22px 0;
   }
   .wrow__year {
     grid-area: year;
   }
   .wrow__client {
     grid-area: client;
+    font-size: var(--text-xl);
   }
   .wrow__type {
     grid-area: type;
@@ -206,10 +277,29 @@
 
 @media (max-width: 560px) {
   .wrow__gallery {
-    flex-direction: column;
+    padding: 16px;
   }
-  .wrow__img {
-    height: 190px;
-    flex: none;
+  .browser--wide {
+    grid-column: 1 / span 11;
+    margin-bottom: 70px;
+  }
+  .browser--narrow {
+    grid-column: 3 / span 10;
+    margin-top: 80px;
+  }
+  .browser__bar {
+    height: 18px;
+    gap: 4px;
+    padding: 0 8px;
+  }
+  .browser__bar span {
+    width: 6px;
+    height: 6px;
+  }
+  .browser__bar::after {
+    height: 8px;
+  }
+  .browser {
+    border-radius: 8px;
   }
 }

@@ -10,20 +10,39 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="about" aria-labelledby="hero-heading">
-    <h1 class="hero__title" id="hero-heading">
-      <span class="hero__word hero__word--left">RESIZING</span>
-      <span class="hero__row">
-        <img
-          class="hero__thumb"
-          src="/Calgary_Sky.webp"
-          width="380"
-          height="675"
-          alt="The Calgary skyline seen from a prairie park"
-          fetchpriority="high"
-        />
-        <span class="hero__word">STUDIO</span>
-      </span>
-    </h1>
+    <div class="hero__canvas">
+      <!-- Decorative design-tool selection frame with a live size readout -->
+      <div class="sel-frame hero__frame" data-sel-frame aria-hidden="true">
+        <span class="sel-frame__label" data-sel-label>Desktop</span>
+        <span class="sel-frame__handle sel-frame__handle--tl"></span>
+        <span class="sel-frame__handle sel-frame__handle--tc"></span>
+        <span class="sel-frame__handle sel-frame__handle--tr"></span>
+        <span class="sel-frame__handle sel-frame__handle--ml"></span>
+        <span class="sel-frame__handle sel-frame__handle--mr"></span>
+        <span class="sel-frame__handle sel-frame__handle--bl"></span>
+        <span class="sel-frame__handle sel-frame__handle--bc"></span>
+        <span class="sel-frame__handle sel-frame__handle--br"></span>
+        <span class="sel-frame__dims" data-sel-dims>— × —</span>
+        <svg class="sel-frame__cursor" viewBox="0 0 24 24" focusable="false">
+          <path d="M4.5 4.5v8l2.8-2.8 7 7-2.8 2.8h8v-8l-2.8 2.8-7-7 2.8-2.8z" fill="#14171c" stroke="#fbf9f4" stroke-width="1.6" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <h1 class="hero__title" id="hero-heading">
+        <span class="hero__word hero__word--left">RESIZING</span>
+        <span class="hero__row">
+          <img
+            class="hero__thumb"
+            src="/Calgary_Sky.webp"
+            width="380"
+            height="675"
+            alt="The Calgary skyline seen from a prairie park"
+            fetchpriority="high"
+          />
+          <span class="hero__word">STUDIO</span>
+        </span>
+      </h1>
+    </div>
 
     <div class="hero__meta">
       <p class="hero__intro">
@@ -42,23 +61,39 @@
   <!-- ===== SERVICES ===== -->
   <section class="services section-panel on-dark reveal" id="services" aria-labelledby="services-heading">
     <div class="section-head">
-      <h2 class="section-head__title" id="services-heading">What we do</h2>
+      <span class="section-head__index" aria-hidden="true">(01)</span>
+      <h2 class="section-head__title" id="services-heading">What we <em>do</em></h2>
       <span class="section-head__note" aria-hidden="true">Built for small business</span>
     </div>
 
-    <div class="services__grid">
-      <article class="svc">
-        <span class="svc__num" aria-hidden="true">01</span>
+    <div class="services__grid stagger">
+      <article class="svc" data-spotlight>
+        <div class="svc__top">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19M5.5 6.25h.01M7.75 6.25h.01"/><path d="m9.5 12-2.5 2.5L9.5 17M14.5 12l2.5 2.5-2.5 2.5"/></svg>
+          </span>
+          <span class="svc__num" aria-hidden="true">01</span>
+        </div>
         <h3 class="svc__title">Web Development</h3>
         <p class="svc__desc">Custom websites built with modern technologies. Fast, accessible, and designed to turn visitors into customers.</p>
       </article>
-      <article class="svc">
-        <span class="svc__num" aria-hidden="true">02</span>
+      <article class="svc" data-spotlight>
+        <div class="svc__top">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3.5" width="18" height="7" rx="2"/><rect x="3" y="13.5" width="18" height="7" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h3"/><path d="m16 17 1.2 1.2L19.5 16"/></svg>
+          </span>
+          <span class="svc__num" aria-hidden="true">02</span>
+        </div>
         <h3 class="svc__title">Hosting &amp; Maintenance</h3>
         <p class="svc__desc">Reliable hosting with ongoing updates and support. Your site stays fast, secure, and running smoothly.</p>
       </article>
-      <article class="svc">
-        <span class="svc__num" aria-hidden="true">03</span>
+      <article class="svc" data-spotlight>
+        <div class="svc__top">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 3.5 6 13l4 4.5h4l4-4.5-6-9.5Z"/><path d="M12 3.5V11"/><circle cx="12" cy="12.6" r="1.6"/><path d="M9.5 20.5h5"/></svg>
+          </span>
+          <span class="svc__num" aria-hidden="true">03</span>
+        </div>
         <h3 class="svc__title">Branding</h3>
         <p class="svc__desc">Visual identity that captures your essence — from logos to complete brand systems that make you memorable.</p>
       </article>
@@ -68,6 +103,7 @@
       <a href="/contact" class="services__pricing">
         <span class="services__pricing-tag">From $500</span>
         <span class="services__pricing-text">Straightforward pricing, no surprises — ask us for a quote</span>
+        <span class="services__pricing-arrow" aria-hidden="true">→</span>
       </a>
     </div>
   </section>
@@ -75,7 +111,8 @@
   <!-- ===== SHOWCASED WORK ===== -->
   <section class="work reveal" id="work" aria-labelledby="work-heading">
     <div class="section-head">
-      <h2 class="section-head__title" id="work-heading">Selected work</h2>
+      <span class="section-head__index" aria-hidden="true">(02)</span>
+      <h2 class="section-head__title" id="work-heading">Selected <em>work</em></h2>
       <span class="section-head__note" aria-hidden="true">2 projects — more shipping soon</span>
     </div>
 
@@ -105,8 +142,14 @@
         <div class="wrow__panel" id="wrow-panel-pureglow" role="region" aria-labelledby="wrow-trigger-pureglow">
           <div class="wrow__inner">
             <div class="wrow__gallery">
-              <img class="wrow__img wrow__img--wide" src="/PureGlowHome.webp" width="1700" height="844" alt="PureGlow Electric website homepage" loading="lazy" decoding="async" />
-              <img class="wrow__img wrow__img--narrow" src="/PureGlowServices.webp" width="1500" height="745" alt="PureGlow Electric services page" loading="lazy" decoding="async" />
+              <figure class="browser browser--wide">
+                <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <img class="wrow__img" src="/PureGlowHome.webp" width="1700" height="844" alt="PureGlow Electric website homepage" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="browser browser--narrow">
+                <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <img class="wrow__img" src="/PureGlowServices.webp" width="1500" height="745" alt="PureGlow Electric services page" loading="lazy" decoding="async" />
+              </figure>
             </div>
             <p class="wrow__desc">PureGlow Electric's website gives the electrical services company a professional online presence, making it simple for customers to learn about their services and get in touch. Clear service descriptions, contact information, and a user-friendly layout help visitors quickly find what they need.</p>
           </div>
@@ -130,8 +173,14 @@
         <div class="wrow__panel" id="wrow-panel-tucn" role="region" aria-labelledby="wrow-trigger-tucn" inert>
           <div class="wrow__inner">
             <div class="wrow__gallery">
-              <img class="wrow__img wrow__img--wide" src="/TUCNHome.webp" width="1700" height="844" alt="TUCN Media website homepage" loading="lazy" decoding="async" />
-              <img class="wrow__img wrow__img--narrow" src="/TUCNServices.webp" width="1500" height="745" alt="TUCN Media services page" loading="lazy" decoding="async" />
+              <figure class="browser browser--wide">
+                <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <img class="wrow__img" src="/TUCNHome.webp" width="1700" height="844" alt="TUCN Media website homepage" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="browser browser--narrow">
+                <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <img class="wrow__img" src="/TUCNServices.webp" width="1500" height="745" alt="TUCN Media services page" loading="lazy" decoding="async" />
+              </figure>
             </div>
             <p class="wrow__desc">TUCN Media needed a fast, credible web presence that could evolve with campaigns. The site highlights their services with clear messaging, strong typography, and a contact flow that stays lightweight so visitors can reach out without friction.</p>
           </div>
@@ -141,70 +190,79 @@
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section class="faq section-panel on-dark reveal" id="faq" aria-labelledby="faq-heading">
-    <div class="section-head">
-      <h2 class="section-head__title" id="faq-heading">Common questions</h2>
-      <span class="section-head__note" aria-hidden="true">Straight answers</span>
-    </div>
+  <section class="faq reveal" id="faq" aria-labelledby="faq-heading">
+    <div class="faq__layout">
+      <div class="faq__aside">
+        <div class="section-head">
+          <span class="section-head__index" aria-hidden="true">(03)</span>
+          <h2 class="section-head__title" id="faq-heading">Common <em>questions</em></h2>
+          <span class="section-head__note" aria-hidden="true">Straight answers</span>
+        </div>
 
-    <div class="faq__list">
-      <details class="faq__item is-open" open>
-        <summary aria-expanded="true">
-          <span class="faq__q">How long does it take to build a website?</span>
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__panel">
-          <div class="faq__inner">
-            <p>Most projects are completed within 4–5 weeks, depending on scope and how quickly feedback comes back to us. Larger or more complex sites may take longer — we'll give you a realistic timeline up front.</p>
-          </div>
+        <div class="faq__cta">
+          <a href="/contact" class="btn btn--primary">Ask us anything <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="faq__cta-note">We usually reply within one business day.</span>
         </div>
-      </details>
-      <details class="faq__item">
-        <summary aria-expanded="false">
-          <span class="faq__q">Do you offer ongoing support or maintenance?</span>
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__panel">
-          <div class="faq__inner">
-            <p>Yes. Our maintenance packages keep your site secure, up to date, and running smoothly after launch. Ask us about ongoing support options when we scope your project.</p>
-          </div>
-        </div>
-      </details>
-      <details class="faq__item">
-        <summary aria-expanded="false">
-          <span class="faq__q">What if I need changes after the website goes live?</span>
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__panel">
-          <div class="faq__inner">
-            <p>Minor revisions within the agreed scope are included. For anything beyond that, we offer affordable hourly or retainer-based support — no gatekeeping, no surprise invoices.</p>
-          </div>
-        </div>
-      </details>
-      <details class="faq__item">
-        <summary aria-expanded="false">
-          <span class="faq__q">Who hosts the website?</span>
-          <span class="faq__icon" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__panel">
-          <div class="faq__inner">
-            <p>Your website is hosted on Cloudflare Pages, connected directly to a GitHub repository. When we make updates, Cloudflare automatically detects the change, builds the project, and deploys it live — all within minutes.</p>
-          </div>
-        </div>
-      </details>
-    </div>
+      </div>
 
-    <div class="faq__cta">
-      <a href="/contact" class="btn btn--moss">Ask us anything <span class="btn__arrow" aria-hidden="true">→</span></a>
-      <span class="faq__cta-note">We usually reply within one business day.</span>
+      <div class="faq__list">
+        <details class="faq__item is-open" open>
+          <summary aria-expanded="true">
+            <span class="faq__num" aria-hidden="true">01</span>
+            <span class="faq__q">How long does it take to build a website?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__panel">
+            <div class="faq__inner">
+              <p>Most projects are completed within 4–5 weeks, depending on scope and how quickly feedback comes back to us. Larger or more complex sites may take longer — we'll give you a realistic timeline up front.</p>
+            </div>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary aria-expanded="false">
+            <span class="faq__num" aria-hidden="true">02</span>
+            <span class="faq__q">Do you offer ongoing support or maintenance?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__panel">
+            <div class="faq__inner">
+              <p>Yes. Our maintenance packages keep your site secure, up to date, and running smoothly after launch. Ask us about ongoing support options when we scope your project.</p>
+            </div>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary aria-expanded="false">
+            <span class="faq__num" aria-hidden="true">03</span>
+            <span class="faq__q">What if I need changes after the website goes live?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__panel">
+            <div class="faq__inner">
+              <p>Minor revisions within the agreed scope are included. For anything beyond that, we offer affordable hourly or retainer-based support — no gatekeeping, no surprise invoices.</p>
+            </div>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary aria-expanded="false">
+            <span class="faq__num" aria-hidden="true">04</span>
+            <span class="faq__q">Who hosts the website?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq__panel">
+            <div class="faq__inner">
+              <p>Your website is hosted on Cloudflare Pages, connected directly to a GitHub repository. When we make updates, Cloudflare automatically detects the change, builds the project, and deploys it live — all within minutes.</p>
+            </div>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="cta reveal" id="contact" aria-labelledby="cta-heading">
+  <section class="cta on-dark reveal" id="contact" aria-labelledby="cta-heading">
     <div class="cta__inner">
       <div class="cta__content">
-        <h2 class="cta__title" id="cta-heading">Let's build something worth clicking.</h2>
+        <h2 class="cta__title" id="cta-heading">Let's build something <em>worth clicking.</em></h2>
         <p class="cta__sub">Starting a project, curious about our services, or just want to say hello? Reach out directly or fill out our <a href="/contact" class="cta__sub-link">enquiry form</a> — it takes two minutes.</p>
         <p class="cta__badge">Limited spots in <span id="quarter">Q2</span></p>
       </div>
@@ -227,6 +285,14 @@
         </div>
       </div>
     </div>
+
+    <!-- Decorative skyline silhouette against the sunset -->
+    <svg class="cta__skyline" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <path fill="#272c41" opacity=".75" d="M-10 200V164H31V200ZM31 200V158H80V200ZM84 200V162H114V200ZM118 200V162H160V200ZM160 200V160H216V200ZM220 200V153H271V200ZM271 200V148H311V200ZM315 200V141H341V200ZM341 200V132H377V200ZM377 200V122H422V200ZM424 200V114H480V200ZM484 200V106H537V200ZM541 200V65H575V200ZM575 200V110H582V100H596V110H603V200ZM603 200V38H645V200ZM649 200V64H694V200ZM698 200V59H710V49H734V59H746V200ZM750 200V34L790 20V200ZM790 200V17H833V200ZM833 200V37H844V27H868V37H879V200ZM879 200V71H888V61H909V71H918V200ZM920 200V113H931V103H953V113H964V200ZM968 200V118H1024V200ZM1024 200V110L1076 96V200ZM1076 200V129H1120V200ZM1124 200V151H1157V200ZM1157 200V138H1207V200ZM1209 200V151H1252V200ZM1252 200V167H1297V200ZM1297 200V150H1325V200ZM1329 200V160H1373V200ZM1373 200V154H1401V200ZM1403 200V167H1449V200ZM1449 200V168H1499V200Z"/>
+      <path fill="currentColor" d="M-10 200V173H48V200ZM52 200V178H110V200ZM110 200V172H151V200ZM155 200V174H225V200ZM225 200V174H261V200ZM261 200V169H296V200ZM296 200V151H364V200ZM368 200V144H437V200ZM437 200V152H500V200ZM500 200V92H542V200ZM542 200V125L601 111V200ZM601 200V118L664 104V200ZM666 200V117H727V200ZM727 200V75L786 61V200ZM790 200V46H855V200ZM855 200V128L901 114V200ZM901 200V131H963V200ZM963 200V127H1029V200ZM1033 200V141H1069V200ZM1073 200V147H1107V200ZM1107 200V173H1150V200ZM1150 200V174H1210V200ZM1214 200V183H1270V200ZM1270 200V180H1317V200ZM1319 200V185H1370V200ZM1374 200V184H1411V200ZM1411 200V185H1441V200ZM1445 200V176H1486V200ZM842 200V52Q872 36 904 50V200ZM1053 200L1056 64H1064L1067 200ZM1045 60Q1060 52 1075 60V68Q1060 74 1045 68ZM1055 52H1065V36H1055ZM1059 36V12H1061V36Z"/>
+      <rect class="win win--blink" x="326" y="168" width="3" height="4"/><rect class="win win--blink" x="402" y="177" width="3" height="4"/><rect class="win" x="423" y="158" width="3" height="4"/><rect class="win" x="491" y="190" width="3" height="4"/><rect class="win win--blink" x="533" y="116" width="3" height="4"/><rect class="win" x="506" y="172" width="3" height="4"/><rect class="win win--blink" x="590" y="185" width="3" height="4"/><rect class="win" x="644" y="134" width="3" height="4"/><rect class="win win--blink" x="626" y="121" width="3" height="4"/><rect class="win win--warm" x="649" y="176" width="3" height="4"/><rect class="win" x="778" y="86" width="3" height="4"/><rect class="win win--warm" x="915" y="155" width="3" height="4"/><rect class="win" x="930" y="159" width="3" height="4"/><rect class="win" x="916" y="148" width="3" height="4"/><rect class="win" x="1019" y="175" width="3" height="4"/><rect class="win" x="1016" y="178" width="3" height="4"/><rect class="win win--warm win--blink" x="1010" y="139" width="3" height="4"/>
+      <circle class="beacon" cx="1060" cy="11" r="2.6"/>
+    </svg>
   </section>
   </main>
 

@@ -1,56 +1,82 @@
 /* ============================================================
    Design tokens — the single source of truth for the system.
-   Palette: warm paper + forest green + chartreuse signal.
-   Type: Bricolage Grotesque (display) / Instrument Sans (body)
-         / Spline Sans Mono (data, labels, wayfinding).
+   Palette: "Prairie Dusk" — sampled from the Calgary skyline at
+   sundown. Warm bone paper, slate-night ink, an ember signal
+   colour and soft dusk gradients (sky blue → lavender → peach).
+   Type: Bricolage Grotesque (display) / Instrument Serif (italic
+         accents) / Instrument Sans (body) / Spline Sans Mono (data).
    ============================================================ */
 
 :root {
-  /* ----- Color ----- */
-  --paper: #f5f3ea;
-  --paper-raised: #fdfcf7;
-  --ink: #191d18;
-  --ink-soft: #2b312a;
-  --muted: #5a6056;
-  --muted-on-dark: #b6c2b0;
-  --faint-on-dark: rgba(245, 243, 234, 0.72);
+  /* ----- Surfaces (light) ----- */
+  --paper: #f4f0e8;
+  --paper-raised: #fbf9f4;
+  --paper-sunk: #ebe5d9;
+  --sand: #e7e0d2;
 
-  --forest: #2e463a;
-  --forest-deep: #223528;
-  --forest-soft: #e5ebe2;
-  --moss: #d9e84f;
-  --moss-soft: #eef4c8;
+  /* ----- Ink ----- */
+  --ink: #14171c;
+  --ink-soft: #2c3038;
+  --muted: #575c67;
 
-  --line: #ddd8c8;
-  --line-strong: #c8c2ae;
-  --line-on-dark: rgba(245, 243, 234, 0.16);
+  /* ----- Night (dark panels) ----- */
+  --night: #12151b;
+  --night-raised: #1a1e27;
+  --night-high: #232835;
+  --on-night: #f4f0e8;
+  --on-night-soft: rgba(244, 240, 232, 0.74);
+  --on-night-muted: #9aa3b5;
 
-  --focus-ring: #1f6b47;
-  --focus-ring-on-dark: var(--moss);
-  --selection-bg: #2e463a;
-  --selection-fg: #f5f3ea;
+  /* ----- Signal & dusk ----- */
+  --ember: #ff6a3d;
+  --ember-hover: #ff8259;
+  --ember-deep: #b23a0e; /* ember for text on paper (AA) */
+  --ember-soft: #ffe1d4;
+  --peach: #f3c9a4;
+  --lavender: #8e86b8;
+  --dusk: #7f96be;
+  --dusk-deep: #2a3350;
 
-  --ok: #4ade80;
+  /* ----- Lines ----- */
+  --line: #ddd5c6;
+  --line-strong: #c5bba8;
+  --line-on-dark: rgba(244, 240, 232, 0.12);
+  --line-on-dark-strong: rgba(244, 240, 232, 0.22);
+
+  /* ----- Interaction ----- */
+  --focus-ring: var(--ember-deep);
+  --focus-ring-on-dark: var(--ember);
+  --selection-bg: #ff6a3d;
+  --selection-fg: #14171c;
+
+  --ok: #3ccf7a;
   --off: #f0a04b;
 
   /* ----- Texture ----- */
-  --bg-dots-image: radial-gradient(circle, rgba(25, 29, 24, 0.11) 1px, transparent 1px);
-  --bg-dots-size: 26px;
+  --bg-dots-image: radial-gradient(circle, rgba(20, 23, 28, 0.1) 1px, transparent 1.2px);
+  --bg-dots-size: 24px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --dusk-glow:
+    radial-gradient(120% 80% at 100% 0%, rgba(127, 150, 190, 0.18), transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, rgba(255, 106, 61, 0.12), transparent 60%);
 
   /* ----- Typography ----- */
-  --font-display: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Instrument Sans', system-ui, sans-serif;
-  --font-mono: 'Spline Sans Mono', ui-monospace, 'Menlo', monospace;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* System mono with full box-drawing + block glyph coverage (ASCII art) */
+  --font-ascii: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
 
   /* Fluid type scale */
   --text-xs: clamp(0.6875rem, 0.66rem + 0.15vw, 0.75rem);   /* 11–12 */
-  --text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);   /* 13–14 */
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);  /* 13–15 */
   --text-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);/* 15–17 */
   --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);    /* 18–22 */
   --text-xl: clamp(1.375rem, 1.2rem + 0.9vw, 1.875rem);     /* 22–30 */
-  --text-2xl: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);      /* 28–44 */
-  --text-3xl: clamp(2.25rem, 1.6rem + 3.2vw, 4rem);         /* 36–64 */
-  --text-hero: clamp(3rem, 14.2vw, 13.5rem);                /* 48–216 */
+  --text-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);          /* 32–56 */
+  --text-3xl: clamp(2.5rem, 1.6rem + 4.4vw, 5.5rem);        /* 40–88 */
+  --text-hero: clamp(3.1rem, 14.6vw, 14rem);                /* 50–224 */
 
   /* ----- Space & shape ----- */
   --space-2xs: 0.375rem;
@@ -59,26 +85,30 @@
   --space-md: 1.5rem;
   --space-lg: 2.5rem;
   --space-xl: 4rem;
-  --space-2xl: clamp(4rem, 4rem + 4vw, 7.5rem);
+  --space-2xl: clamp(4.5rem, 4rem + 5vw, 9rem);
 
   --gutter: clamp(1.125rem, 0.9rem + 1.8vw, 2.75rem);
   --panel-inset: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+  --content-max: 1360px;
 
-  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --radius-panel: clamp(20px, 2.6vw, 34px);
+  --radius-panel: clamp(22px, 2.8vw, 40px);
   --radius-pill: 999px;
 
   /* ----- Elevation ----- */
-  --shadow-pill: 0 1px 2px rgba(25, 29, 24, 0.05), 0 8px 24px rgba(25, 29, 24, 0.07);
-  --shadow-card: 0 2px 6px rgba(25, 29, 24, 0.06), 0 16px 40px rgba(25, 29, 24, 0.1);
-  --shadow-image: 0 14px 34px rgba(20, 30, 22, 0.22);
+  --shadow-pill: 0 1px 2px rgba(20, 23, 28, 0.06), 0 8px 24px rgba(20, 23, 28, 0.08);
+  --shadow-card: 0 2px 6px rgba(20, 23, 28, 0.06), 0 18px 44px rgba(20, 23, 28, 0.12);
+  --shadow-float: 0 4px 10px rgba(20, 23, 28, 0.08), 0 30px 70px -10px rgba(20, 23, 28, 0.3);
+  --shadow-image: 0 14px 34px rgba(20, 23, 28, 0.22);
 
   /* ----- Motion ----- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring: cubic-bezier(0.34, 1.4, 0.44, 1);
   --dur-fast: 0.18s;
   --dur-base: 0.3s;
-  --dur-slow: 0.55s;
+  --dur-slow: 0.6s;
 }

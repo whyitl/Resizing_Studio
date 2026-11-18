@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { execSync } from 'node:child_process'
 import { mkdir, rename } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,10 +9,25 @@ import { injectPartials } from './vite-partials-plugin.js'
 const root = fileURLToPath(new URL('.', import.meta.url))
 const DIRECTORY_PAGES = ['contact', 'privacy-policy', 'terms', 'accessibility']
 
+/** Short commit SHA for the footer build stamp (Cloudflare Pages → git → 'local'). */
+function buildSha() {
+  const fromCi = process.env.CF_PAGES_COMMIT_SHA
+  if (fromCi) return fromCi.slice(0, 7)
+  try {
+    return execSync('git rev-parse --short=7 HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+      .toString()
+      .trim()
+  } catch {
+    return 'local'
+  }
+}
+
 function cleanUrlMiddleware() {
   return (req, _res, next) => {
     if (!req.url) return next()
     const [pathname, search = ''] = req.url.split('?')
+    // Leave Vite's internal endpoints alone (/@vite/client, /@fs/…, /@id/…)
+    if (pathname.startsWith('/@') || pathname.startsWith('/__')) return next()
     if (
       pathname !== '/' &&
       !pathname.includes('.') &&
@@ -60,6 +76,10 @@ function directoryPages() {
 
 export default defineConfig({
   root: 'src',
+  define: {
+    __BUILD_SHA__: JSON.stringify(buildSha()),
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+  },
   plugins: [cleanUrls(), injectPartials(), injectSeo(), directoryPages()],
   build: {
     target: 'es2020',

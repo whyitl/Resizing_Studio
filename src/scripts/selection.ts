@@ -1,6 +1,6 @@
 /**
- * Adaptive text-selection colors: dark highlight on light sections,
- * light highlight on dark sections, based on effective background.
+ * Adaptive text-selection colors: ember highlight on light sections,
+ * soft peach highlight on dark sections, based on effective background.
  */
 
 interface SelectionTheme {
@@ -8,8 +8,8 @@ interface SelectionTheme {
   fg: string
 }
 
-const SELECTION_LIGHT: SelectionTheme = { bg: '#2e463a', fg: '#f5f3ea' }
-const SELECTION_DARK: SelectionTheme = { bg: '#f5f3ea', fg: '#191d18' }
+const SELECTION_LIGHT: SelectionTheme = { bg: '#ff6a3d', fg: '#14171c' }
+const SELECTION_DARK: SelectionTheme = { bg: '#f3c9a4', fg: '#14171c' }
 
 type Rgb = [number, number, number]
 
